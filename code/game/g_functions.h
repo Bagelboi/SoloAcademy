@@ -141,6 +141,7 @@ typedef enum
 
 	//rww - added for sky portals
 	thinkF_G_PortalifyEntities,
+	thinkF_grapple_hook_think
 
 } thinkFunc_t;
 
@@ -248,6 +249,8 @@ extern void misc_weapon_shooter_aim	( gentity_t *self );
 extern void misc_weapon_shooter_fire( gentity_t *self );
 
 extern void beacon_think			( gentity_t *self );
+
+extern void grapple_hook_think		(gentity_t* self);
 
 
 //	void		(*clThink)(centity_s *cent);	//Think func for equivalent centity

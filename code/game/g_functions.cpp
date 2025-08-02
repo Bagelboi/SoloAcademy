@@ -138,7 +138,7 @@ void GEntity_ThinkFunc(gentity_t *self)
 	THINKCASE( misc_weapon_shooter_fire )
 
 	THINKCASE( beacon_think )
-
+	THINKCASE( grapple_hook_think )
 	default:
 		Com_Error(ERR_DROP, "GEntity_ThinkFunc: case %d not handled!\n",self->e_ThinkFunc);
 		break;

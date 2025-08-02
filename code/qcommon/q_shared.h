@@ -74,12 +74,12 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
 #define HOMEPATH_NAME_WIN "OpenJO"
 #define HOMEPATH_NAME_MACOSX HOMEPATH_NAME_WIN
 #else
-#define PRODUCT_NAME			"openjk_sp"
+#define PRODUCT_NAME			"soloacademy"
 
-#define CLIENT_WINDOW_TITLE "OpenJK (SP)"
-#define CLIENT_CONSOLE_TITLE "OpenJK Console (SP)"
-#define HOMEPATH_NAME_UNIX "openjk"
-#define HOMEPATH_NAME_WIN "OpenJK"
+#define CLIENT_WINDOW_TITLE "Solo Academy"
+#define CLIENT_CONSOLE_TITLE "Solo Academy Console"
+#define HOMEPATH_NAME_UNIX "soloacademy"
+#define HOMEPATH_NAME_WIN "SoloAcademy"
 #define HOMEPATH_NAME_MACOSX HOMEPATH_NAME_WIN
 #endif
 
@@ -779,6 +779,23 @@ typedef enum
 	NUM_SABERS
 } saberType_t;
 
+typedef enum {
+	SOLO_DEX = 0,
+	SOLO_MARK,
+	SOLO_GAY,
+	NUM_SOLO_SKILLS
+} soloSkills_t;
+
+#define SOLO_PERC_DEX 0.5f
+#define SOLO_PERC_MARK 0.3f
+#define SOLO_PERC_GAY 0.2f
+
+typedef enum {
+	SOLO_GRAPPLE_NONE = 0,
+	SOLO_GRAPPLE_REELOUT,
+	SOLO_GRAPPLE_STUCK,
+	SOLO_GRAPPLE_REELIN
+} soloGrapple_t;
 //=========================================================
 
 // bit field limits
@@ -802,6 +819,8 @@ typedef enum
 #define MAX_WORLD_COORD		( 64*1024 )
 #define MIN_WORLD_COORD		( -64*1024 )
 #define WORLD_SIZE			( MAX_WORLD_COORD - MIN_WORLD_COORD )
+
+
 
 typedef enum
 {
@@ -1571,6 +1590,7 @@ public:
 // so if a playerState_t is transmitted, the entityState_t can be fully derived
 // from it.
 // !!!!!!!!!! LOADSAVE-affecting structure !!!!!!!!!!
+
 template<typename TSaberInfo>
 class PlayerStateBase
 {
@@ -1898,10 +1918,21 @@ public:
 	int			electrifyTime;
 #endif // !JK2_MODE
 
+	//solo stuff
+	float  soloSkills[NUM_SOLO_SKILLS]; //percentage based skills
+	float  forceSensive; //force sensitivity, 0.0 to 1.0
+	//float grappleHookPerc;
+	int grappleHookEntNum; //entity num of the grapple hook, if any
+	soloGrapple_t grappleHookState; //time until the grapple hook can be used again
 
 	void sg_export(
 		ojk::SavedGameHelper& saved_game) const
 	{
+
+		//solo
+		saved_game.write<float>(soloSkills);
+		saved_game.write<float>(forceSensive);
+		//og game
 		saved_game.write<int32_t>(commandTime);
 		saved_game.write<int32_t>(pm_type);
 		saved_game.write<int32_t>(bobCycle);
@@ -2071,6 +2102,12 @@ public:
 	void sg_import(
 		ojk::SavedGameHelper& saved_game)
 	{
+
+		//solo
+		saved_game.read<float>(soloSkills);
+		saved_game.read<float>(forceSensive);
+		//og game
+
 		saved_game.read<int32_t>(commandTime);
 		saved_game.read<int32_t>(pm_type);
 		saved_game.read<int32_t>(bobCycle);

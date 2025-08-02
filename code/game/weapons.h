@@ -382,5 +382,6 @@ typedef struct ammoData_s
 #define TUSKEN_RIFLE_DAMAGE_MEDIUM	30		// very damaging
 #define TUSKEN_RIFLE_DAMAGE_HARD	50		// extremely damaging
 
+#define SOLO_COWBOY_WEPS ( (1 << WP_ATST_MAIN) | (1 << WP_BRYAR_PISTOL) | (1 << WP_FLECHETTE) | (1 << WP_BOWCASTER) | (1 << WP_BLASTER_PISTOL) )
 
 #endif//#ifndef __WEAPONS_H__

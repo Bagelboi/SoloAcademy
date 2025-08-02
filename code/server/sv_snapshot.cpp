@@ -288,7 +288,7 @@ float sv_sightRangeForLevel[6] =
 	4096.0f//FORCE_LEVEL_5
 };
 
-qboolean SV_PlayerCanSeeEnt( gentity_t *ent, int sightLevel )
+qboolean SV_PlayerCanSeeEnt( gentity_t *ent, int sightLevel, bool sensive=true )
 {//return true if this ent is in view
 	//NOTE: this is similar to the func CG_PlayerCanSeeCent in cg_players
 	vec3_t viewOrg, viewAngles, viewFwd, dir2Ent;
@@ -301,7 +301,7 @@ qboolean SV_PlayerCanSeeEnt( gentity_t *ent, int sightLevel )
 		if ( VM_Call( CG_CAMERA_ANG, viewAngles))
 		{
 			float dot = 0.25f;//1.0f;
-			float range = sv_sightRangeForLevel[sightLevel];
+			float range = sv_sightRangeForLevel[sightLevel] * (sensive ? 1 : 0.25);
 
 			VectorSubtract( ent->currentOrigin, viewOrg, dir2Ent );
 			float entDist = VectorNormalize( dir2Ent );
@@ -430,7 +430,7 @@ static void SV_AddEntitiesVisibleFromPoint( vec3_t origin, clientSnapshot_t *fra
 #ifndef JK2_MODE
 		if ( sightOn )
 		{//force sight is on, sees through portals, so draw them always if in radius
-			if ( SV_PlayerCanSeeEnt( ent, frame->ps.forcePowerLevel[FP_SEE] ) )
+			if ( SV_PlayerCanSeeEnt( ent, frame->ps.forcePowerLevel[FP_SEE], frame->ps.forceSensive ) )
 			{//entity is visible
 				SV_AddEntToSnapshot( svEnt, ent, eNums );
 				continue;

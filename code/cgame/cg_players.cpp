@@ -4467,6 +4467,8 @@ qboolean CG_PlayerCanSeeCent( centity_t *cent )
 		break;
 	}
 
+	range *= g_entities[0].client->ps.forceSensive ? 0.4 : 1;
+
 	vec3_t	centDir, lookDir;
 	VectorSubtract( cent->lerpOrigin, cg.refdef.vieworg, centDir );
 	float centDist = VectorNormalize( centDir );
@@ -5005,7 +5007,8 @@ void CG_AddRefEntityWithPowerups( refEntity_t *ent, int powerups, centity_t *cen
 
 	if ((cg.snap->ps.forcePowersActive & (1 << FP_SEE))
 		&& cg.snap->ps.clientNum != cent->currentState.number
-		&& (cent->currentState.eFlags&EF_FORCE_VISIBLE
+		&& (cg.snap->ps.forceSensive &&
+			cent->currentState.eFlags&EF_FORCE_VISIBLE
 			|| ((cent->gent->health > 0 || cent->gent->message )
 			&& cent->currentState.eType == ET_PLAYER//other things handle this in their own render funcs
 			&& CG_PlayerCanSeeCent( cent ))

@@ -942,6 +942,80 @@ void Cmd_UseSentry_f(gentity_t *ent)
 	}
 }
 
+
+/*
+
+Solo Grappling Hook Command
+
+*/
+
+void G_SoloHook(gentity_t* ent) {
+	if (ent->health < 1 || in_camera)
+	{
+		return;
+	}
+
+	if (ent->client)
+	{
+		if (ent->client->ps.grappleHookEntNum <= 0 || ent->client->ps.grappleHookEntNum >= ENTITYNUM_WORLD) {
+
+			if (ent->client->ps.grappleHookState == SOLO_GRAPPLE_NONE) {
+				vec3_t start, end, forward;
+				//trace_t tr;
+				gentity_t* grappleEnt; //hi
+
+				VectorCopy(ent->client->renderInfo.eyePoint, start);
+				// Get the forward direction from the player's view angles
+				AngleVectors(ent->client->ps.viewangles, forward, NULL, NULL);
+
+
+				grappleEnt = G_Spawn();
+
+				if (grappleEnt) {
+
+					// Initialize grapple entity properties
+					grappleEnt->classname = "grapple_hook";
+					grappleEnt->svFlags |= SVF_USE_CURRENT_ORIGIN;
+					grappleEnt->s.eType = ET_MISSILE;
+					grappleEnt->s.pos.trType = TR_LINEAR;
+
+					grappleEnt->contents = CONTENTS_NONE;
+					grappleEnt->clipmask = MASK_NPCSOLID;
+
+					grappleEnt->bmodel = qfalse;
+
+					VectorCopy(start, grappleEnt->s.pos.trBase);  // <== this was missing
+					VectorCopy(start, grappleEnt->currentOrigin); // already here
+					VectorScale(forward, 500, grappleEnt->s.pos.trDelta);  // maybe more speed than just 50
+					ent->client->ps.grappleHookEntNum = grappleEnt->s.number;
+					ent->client->ps.grappleHookState = SOLO_GRAPPLE_REELIN;
+					grappleEnt->e_ThinkFunc = thinkF_grapple_hook_think; // Set think function for periodic updates
+					grappleEnt->nextthink = level.time + 100;
+					grappleEnt->owner = ent;
+					grappleEnt->s.pos.trTime = level.time;
+
+					gi.G2API_InitGhoul2Model(grappleEnt->ghoul2, weaponData[WP_TRIP_MINE].missileMdl, G_ModelIndex(weaponData[WP_TRIP_MINE].missileMdl),
+						NULL_HANDLE, NULL_HANDLE, 0, 0);
+
+
+					gi.linkentity(grappleEnt);
+				}
+			} 
+		}
+		else {
+			gentity_t* grapple_ent_existing = &g_entities[ent->client->ps.grappleHookEntNum];
+			if (grapple_ent_existing && ent->client->ps.grappleHookState == SOLO_GRAPPLE_REELIN || ent->client->ps.grappleHookState == SOLO_GRAPPLE_STUCK) {
+				grapple_ent_existing->s.pos.trType = TR_LINEAR;
+				grapple_ent_existing->clipmask = CONTENTS_NONE;
+				ent->client->ps.grappleHookState = SOLO_GRAPPLE_REELOUT;
+			} else if (!grapple_ent_existing) {
+				ent->client->ps.grappleHookEntNum = -1;
+				ent->client->ps.grappleHookState = SOLO_GRAPPLE_NONE;
+			}
+		}
+	}
+}
+
 /*
 ================
 Cmd_UseInventory_f
@@ -1528,6 +1602,11 @@ void ClientCommand( int clientNum ) {
 	{
 		ent = G_GetSelfForPlayerCmd();
 		G_SetTauntAnim( ent, TAUNT_GLOAT );
+	}
+	else if (Q_stricmp(cmd, "solo_hook") == 0)
+	{
+		ent = G_GetSelfForPlayerCmd();
+		G_SoloHook(ent);
 	}
 	/*
 	else if (Q_stricmp (cmd, "drive") == 0)

@@ -1087,12 +1087,40 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 		DEBUGNAME("EV_USE_INV_SENTRY");
 		UseItem(INV_SENTRY );
 		break;
-
+	//case EV_GRAPPLEHOOK:
+		//DEBUGNAME("EV_GRAPPLEHOOK");
+		//break;
 	case EV_DEBUG_LINE:
 		DEBUGNAME("EV_DEBUG_LINE");
 		CG_TestLine(position, es->origin2, es->time, (unsigned int)(es->time2), es->weapon);
 		break;
+	//solo
+	case EV_SOLO_LINE:
+		DEBUGNAME("EV_SOLO_LINE");
+		{
 
+			if (cent->gent->client->ps.grappleHookEntNum <= 0 || cent->gent->client->ps.grappleHookEntNum >= ENTITYNUM_WORLD)
+			{
+				break;
+			}
+			vec3_t start, end;
+			VectorCopy(cent->gent->client->renderInfo.handRPoint, start);
+			VectorCopy(cg_entities[cent->gent->client->ps.grappleHookEntNum].lerpOrigin, end);
+
+			// White color
+			vec3_t white = { 1,0.5,0 };
+
+			// Draw the line using whiteline2 shader, 2 units wide, 150ms lifetime
+			FX_AddLine(
+				start, end, 0.2f,
+				4.0f, 4.0f,
+				1.0f, 1.0f,
+				white, white,
+				40, cgi_R_RegisterShader("gfx/solo/grappleline"),
+				FX_SIZE_LINEAR | FX_ALPHA_LINEAR
+			);
+		}
+		break;
 	default:
 		DEBUGNAME("UNKNOWN");
 		CG_Error( "Unknown event: %i", event );

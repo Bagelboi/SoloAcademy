@@ -153,6 +153,7 @@ static void PM_SetWaterLevelAtPoint( vec3_t org, int *waterlevel, int *watertype
 #define		FLY_NORMAL	1
 #define		FLY_VEHICLE	2
 #define		FLY_HOVER	3
+#define		FLY_GRAPPLEHOOK 8
 int			Flying = FLY_NONE;
 
 pmove_t		*pm;
@@ -2835,6 +2836,59 @@ static void PM_FlyMove( void )
 
 	PM_StepSlideMove( 1 );
 }
+
+static void PM_FlyGrappleMove(void) {
+	// --- 1. SETUP ---
+	gentity_t* hookEntity = &g_entities[pm->ps->grappleHookEntNum];
+	if (!hookEntity || hookEntity->s.number == ENTITYNUM_NONE) {
+		Flying = FLY_NONE;
+		return;
+	}
+
+
+		vec3_t playerToHook;
+		VectorSubtract(hookEntity->currentOrigin, pm->ps->origin, playerToHook);
+		float distanceToHook = VectorLength(playerToHook);
+
+		// --- 5. PULL PLAYER TOWARDS HOOK ---
+		vec3_t pullDir;
+		VectorSubtract(hookEntity->currentOrigin, pm->ps->origin, pullDir);
+		VectorNormalize(pullDir);
+		//VectorMA(pm->ps->velocity, pullStrength * pml.frametime, pullDir, pm->ps->velocity);
+
+		float wishspeed;
+		if (distanceToHook < GRAPPLE_HOOK_LENGTH_MIN) {
+			float ratio = distanceToHook / GRAPPLE_HOOK_LENGTH_MIN;
+			wishspeed = GRAPPLE_HOOK_MAX_SPEED * ratio;  // or ratio*ratio for smoother falloff
+		}
+		else {
+			wishspeed = GRAPPLE_HOOK_MAX_SPEED;
+		}
+
+		PM_Accelerate(pullDir, wishspeed, GRAPPLE_RETRACT_SPEED);
+
+
+
+	// --- 6. SWING CONTROL WITH USER COMMANDS ---
+	vec3_t forward, right, up;
+	AngleVectors(pm->ps->viewangles, forward, right, up);
+
+	// Forward/back: up/down
+	if (pm->cmd.forwardmove != 0) {
+		float upAmount = (pm->cmd.forwardmove / 127.0f) * GRAPPLE_SWING_ACCELERATION * 2 * pml.frametime;
+		VectorMA(pm->ps->velocity, upAmount, forward, pm->ps->velocity);
+	}
+	// Right/left: left/right
+	if (pm->cmd.rightmove != 0) {
+		float rightAmount = (pm->cmd.rightmove / 127.0f) * GRAPPLE_SWING_ACCELERATION * 2 * pml.frametime;
+		VectorMA(pm->ps->velocity, rightAmount, right, pm->ps->velocity);
+	}
+
+	PM_StepSlideMove(1);
+}
+
+
+
 
 qboolean PM_GroundSlideOkay( float zNormal )
 {
@@ -12849,12 +12903,12 @@ void PM_WeaponLightsaber(void)
 				{
 					if ( !MatrixMode )
 					{//Special test for Matrix Mode (tm)
-						if ( pm->ps->clientNum == 0 && !player_locked && (pm->ps->forcePowersActive&(1<<FP_SPEED)||pm->ps->forcePowersActive&(1<<FP_RAGE)) )
+						if ( pm->ps->clientNum == 0 && !player_locked && (pm->ps->forcePowersActive&(1<<FP_SPEED)||(pm->ps->forceSensive && pm->ps->forcePowersActive & (1 << FP_RAGE))) )
 						{//player always fires at normal speed
 							addTime *= g_timescale->value;
 						}
 						else if ( g_entities[pm->ps->clientNum].client
-							&& (pm->ps->forcePowersActive&(1<<FP_SPEED)||pm->ps->forcePowersActive&(1<<FP_RAGE)) )
+							&& (pm->ps->forcePowersActive&(1<<FP_SPEED)||(pm->ps->forceSensive && pm->ps->forcePowersActive & (1 << FP_RAGE))) )
 						{
 							addTime *= g_timescale->value;
 						}
@@ -14023,14 +14077,15 @@ static void PM_Weapon( void )
 		{
 			if ( !MatrixMode )
 			{//Special test for Matrix Mode (tm)
-				if ( pm->ps->clientNum == 0 && !player_locked && (pm->ps->forcePowersActive&(1<<FP_SPEED)||pm->ps->forcePowersActive&(1<<FP_RAGE)) )
-				{//player always fires at normal speed
-					addTime *= g_timescale->value;
+				float sensiveScale = pm->ps->forceSensive /*&& SOLO_COWBOY_WEPS & (1 << pm->ps->weapon)*/? pm->ps->forcePowerLevel[FP_SPEED] / 5 : 1;
+				if ( pm->ps->clientNum == 0 && !player_locked && (pm->ps->forcePowersActive&(1<<FP_SPEED)|| (pm->ps->forceSensive && pm->ps->forcePowersActive&(1<<FP_RAGE)) ) )
+				{//player always fires at normal speed unless not force sensitive and using speed
+					addTime *= (g_timescale->value/sensiveScale);
 				}
 				else if ( g_entities[pm->ps->clientNum].client
-					&& (pm->ps->forcePowersActive&(1<<FP_SPEED)||pm->ps->forcePowersActive&(1<<FP_RAGE)) )
+					&& (pm->ps->forcePowersActive&(1<<FP_SPEED)|| (pm->ps->forceSensive && pm->ps->forcePowersActive & (1 << FP_RAGE))) )
 				{
-					addTime *= g_timescale->value;
+					addTime *= (g_timescale->value/sensiveScale);
 				}
 			}
 		}
@@ -14189,12 +14244,12 @@ static void PM_VehicleWeapon( void )
 		{
 			if ( !MatrixMode )
 			{//Special test for Matrix Mode (tm)
-				if ( pm->ps->clientNum == 0 && !player_locked && (pm->ps->forcePowersActive&(1<<FP_SPEED)||pm->ps->forcePowersActive&(1<<FP_RAGE)) )
+				if ( pm->ps->clientNum == 0 && !player_locked && (pm->ps->forcePowersActive&(1<<FP_SPEED)||(pm->ps->forceSensive && pm->ps->forcePowersActive & (1 << FP_RAGE))) )
 				{//player always fires at normal speed
 					addTime *= g_timescale->value;
 				}
 				else if ( g_entities[pm->ps->clientNum].client
-					&& (pm->ps->forcePowersActive&(1<<FP_SPEED)||pm->ps->forcePowersActive&(1<<FP_RAGE)) )
+					&& (pm->ps->forcePowersActive&(1<<FP_SPEED)||(pm->ps->forceSensive && pm->ps->forcePowersActive & (1 << FP_RAGE))) )
 				{
 					addTime *= g_timescale->value;
 				}
@@ -14380,6 +14435,10 @@ void PM_SetSpecialMoveValues (void )
 				Flying = FLY_HOVER;
 			}
 		}
+		else if (pm->gent->client->ps.grappleHookEntNum > 0 && pm->gent->client->ps.grappleHookEntNum < ENTITYNUM_WORLD
+			&& &g_entities[pm->gent->client->ps.grappleHookEntNum] && pm->gent->client->ps.grappleHookState == SOLO_GRAPPLE_STUCK) {
+			Flying = FLY_GRAPPLEHOOK; //move to hook if stuck to wall
+		}
 	}
 
 	if ( g_timescale != NULL )
@@ -14388,14 +14447,15 @@ void PM_SetSpecialMoveValues (void )
 		{
 			if ( !MatrixMode )
 			{
-				if ( pm->ps->clientNum == 0 && !player_locked && (pm->ps->forcePowersActive&(1<<FP_SPEED)||pm->ps->forcePowersActive&(1<<FP_RAGE)) )
+				float sensiveScale = pm->ps->forceSensive ? pm->ps->forcePowerLevel[FP_SPEED] / 5 : 1;
+				if ( pm->ps->clientNum == 0 && !player_locked && (pm->ps->forcePowersActive&(1<<FP_SPEED)|| (pm->ps->forceSensive && pm->ps->forcePowersActive & (1 << FP_RAGE))) )
 				{
-					pml.frametime *= (1.0f/g_timescale->value);
+					pml.frametime *= (1.0f / g_timescale->value) * sensiveScale;
 				}
 				else if ( g_entities[pm->ps->clientNum].client
-					&& (pm->ps->forcePowersActive&(1<<FP_SPEED)||pm->ps->forcePowersActive&(1<<FP_RAGE)) )
+					&& (pm->ps->forcePowersActive&(1<<FP_SPEED)|| (pm->ps->forceSensive && pm->ps->forcePowersActive & (1 << FP_RAGE))) )
 				{
-					pml.frametime *= (1.0f/g_timescale->value);
+					pml.frametime *= (1.0f/g_timescale->value) * sensiveScale;
 				}
 			}
 		}
@@ -14909,6 +14969,10 @@ void Pmove( pmove_t *pmove )
 	{
 		PM_FlyVehicleMove();
 	}
+	else if (Flying == FLY_GRAPPLEHOOK)
+	{
+		PM_FlyGrappleMove();
+	}
 	else if ( pm->ps->pm_flags & PMF_TIME_WATERJUMP )
 	{
 		PM_WaterJumpMove();
@@ -15142,3 +15206,4 @@ void Pmove( pmove_t *pmove )
 		pm->ps->gravity *= 2;
 	}
 }
+
