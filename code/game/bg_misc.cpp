@@ -380,6 +380,12 @@ qboolean	BG_CanItemBeGrabbed( const entityState_t *ent, const playerState_t *ps 
 					return qtrue;
 				}
 				break;
+			case AMMO_FLASH:
+				if (!(ps->stats[STAT_WEAPONS] & (1 << WP_FLASHBANG)))
+				{
+					return qtrue;
+				}
+				break;
 			case AMMO_DETPACK:
 				if( !(ps->stats[STAT_WEAPONS] & ( 1 << WP_DET_PACK ) ) )
 				{

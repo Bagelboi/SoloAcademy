@@ -1017,7 +1017,7 @@ static void G_CheckSpecialPersistentEvents( gentity_t *ent )
 	{
 		return;
 	}
-	if ( ent->s.eType == ET_MISSILE && ent->s.weapon == WP_THERMAL && ent->s.pos.trType == TR_STATIONARY )
+	if ( ent->s.eType == ET_MISSILE && ent->s.weapon == WP_THERMAL || ent->s.weapon == WP_FLASHBANG && ent->s.pos.trType == TR_STATIONARY )
 	{
 		if ( eventClearTime == level.time + ALERT_CLEAR_TIME )
 		{//events were just cleared out so add me again

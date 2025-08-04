@@ -7625,7 +7625,7 @@ void WP_SaberStartMissileBlockCheck( gentity_t *self, usercmd_t *ucmd  )
 		VectorSubtract( ent->currentOrigin, self->currentOrigin, dir );
 		dist = VectorNormalize( dir );
 		//FIXME: handle detpacks, proximity mines and tripmines
-		if ( ent->s.weapon == WP_THERMAL )
+		if ( ent->s.weapon == WP_THERMAL || ent->s.weapon == WP_FLASHBANG)
 		{//thermal detonator!
 			if ( self->NPC && dist < ent->splashRadius )
 			{
@@ -8245,7 +8245,7 @@ void WP_DropWeapon( gentity_t *dropper, vec3_t velocity )
 	int	replaceWeap = WP_NONE;
 	int oldWeap = dropper->s.weapon;
 	gentity_t *weapon = TossClientItems( dropper );
-	if ( oldWeap == WP_THERMAL && dropper->NPC )
+	if ( oldWeap == WP_THERMAL || oldWeap == WP_FLASHBANG && dropper->NPC )
 	{//Hmm, maybe all NPCs should go into melee?  Not too many, though, or they mob you and look silly
 		replaceWeap = WP_MELEE;
 	}
@@ -8261,7 +8261,7 @@ void WP_DropWeapon( gentity_t *dropper, vec3_t velocity )
 	dropper->client->ps.stats[STAT_WEAPONS] |= ( 1 << replaceWeap );
 	if ( !dropper->s.number )
 	{
-		if ( oldWeap == WP_THERMAL )
+		if ( oldWeap == WP_THERMAL || oldWeap == WP_FLASHBANG )
 		{
 			dropper->client->ps.ammo[weaponData[oldWeap].ammoIndex] -= weaponData[oldWeap].energyPerShot;
 		}
@@ -8659,7 +8659,7 @@ qboolean WP_ForceThrowable( gentity_t *ent, gentity_t *forwardEnt, gentity_t *se
 {
 	if (ent == self)
 		return qfalse;
-	if ( ent->owner == self && ent->s.weapon != WP_THERMAL )//can push your own thermals
+	if ( ent->owner == self && ent->s.weapon != WP_THERMAL || ent->s.weapon != WP_FLASHBANG )//can push your own thermals
 		return qfalse;
 	if ( !(ent->inuse) )
 		return qfalse;
@@ -8828,6 +8828,7 @@ qboolean WP_ForceThrowable( gentity_t *ent, gentity_t *forwardEnt, gentity_t *se
 		case WP_FLECHETTE:
 		case WP_ROCKET_LAUNCHER:
 		case WP_CONCUSSION:
+		case WP_FLASHBANG:
 		case WP_THERMAL:
 		case WP_TRIP_MINE:
 		case WP_DET_PACK:
@@ -8855,7 +8856,7 @@ qboolean WP_ForceThrowable( gentity_t *ent, gentity_t *forwardEnt, gentity_t *se
 		{//can't force-push/pull stuck missiles (detpacks, tripmines)
 			return qfalse;
 		}
-		if ( ent->s.pos.trType == TR_STATIONARY && ent->s.weapon != WP_THERMAL )
+		if ( ent->s.pos.trType == TR_STATIONARY && ent->s.weapon != WP_THERMAL || ent->s.weapon != WP_FLASHBANG )
 		{//only thermal detonators can be pushed once stopped
 			return qfalse;
 		}
@@ -9479,6 +9480,7 @@ void ForceThrow( gentity_t *self, qboolean pull, qboolean fake )
 							&& push_list[x]->s.weapon != WP_SABER
 							&& push_list[x]->s.weapon != WP_MELEE
 							&& push_list[x]->s.weapon != WP_THERMAL
+							&& push_list[x]->s.weapon != WP_FLASHBANG
 							&& push_list[x]->s.weapon != WP_CONCUSSION	// so rax can't drop his
 							)
 						{//yank the weapon - NOTE: level 1 just knocks them down, not take weapon
@@ -9598,7 +9600,7 @@ void ForceThrow( gentity_t *self, qboolean pull, qboolean fake )
 				}
 				else if ( push_list[x]->s.eType == ET_MISSILE
 					&& push_list[x]->s.pos.trType != TR_STATIONARY
-					&& (push_list[x]->s.pos.trType != TR_INTERPOLATE||push_list[x]->s.weapon != WP_THERMAL) )//rolling and stationary thermal detonators are dealt with below
+					&& (push_list[x]->s.pos.trType != TR_INTERPOLATE||push_list[x]->s.weapon != WP_THERMAL || push_list[x]->s.weapon != WP_FLASHBANG) )//rolling and stationary thermal detonators are dealt with below
 				{
 					vec3_t dir2Me;
 					VectorSubtract( self->currentOrigin, push_list[x]->currentOrigin, dir2Me );
@@ -11195,7 +11197,7 @@ void ForceShootLightning( gentity_t *self )
 				continue;
 			if ( traceEnt == self )
 				continue;
-			if ( traceEnt->owner == self && traceEnt->s.weapon != WP_THERMAL )//can push your own thermals
+			if ( traceEnt->owner == self && traceEnt->s.weapon != WP_THERMAL || traceEnt->s.weapon != WP_FLASHBANG)//can push your own thermals
 				continue;
 			if ( !traceEnt->inuse )
 				continue;
@@ -13118,7 +13120,7 @@ void WP_ForcePowerStop( gentity_t *self, forcePowers_t forcePower )
 					gripEnt->s.eFlags &= ~EF_FORCE_GRIPPED;
 					if ( gripEnt->s.eType == ET_MISSILE )
 					{//continue normal movement
-						if ( gripEnt->s.weapon == WP_THERMAL )
+						if ( gripEnt->s.weapon == WP_THERMAL || gripEnt->s.weapon == WP_FLASHBANG)
 						{
 							gripEnt->s.pos.trType = TR_INTERPOLATE;
 						}

@@ -161,6 +161,7 @@ stringID_table_t WPTable[] =
 	ENUM2STRING(WP_TUSKEN_STAFF),
 	ENUM2STRING(WP_SCEPTER),
 	ENUM2STRING(WP_NOGHRI_STICK),
+	ENUM2STRING(WP_FLASHBANG),
 	{ "", 0 }
 };
 
@@ -6551,7 +6552,7 @@ static void Q3_SetCleanDamagingEnts( void )
 
 		if ( ent )
 		{
-			if ( !ent->client && ( ent->s.weapon == WP_DET_PACK || ent->s.weapon == WP_TRIP_MINE || ent->s.weapon == WP_THERMAL ))
+			if ( !ent->client && ( ent->s.weapon == WP_DET_PACK || ent->s.weapon == WP_TRIP_MINE || ent->s.weapon == WP_THERMAL || ent->s.weapon == WP_FLASHBANG ))
 			{
 				// check for a client, otherwise we could remove someone holding this weapon
 				G_FreeEntity( ent );

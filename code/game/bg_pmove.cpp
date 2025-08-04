@@ -9114,7 +9114,7 @@ static void PM_FinishWeaponChange( void ) {
 
 		if ( !(pm->ps->eFlags&EF_HELD_BY_WAMPA) )
 		{
-			if ( pm->ps->weapon != WP_THERMAL
+			if ( pm->ps->weapon != WP_THERMAL && pm->ps->weapon != WP_FLASHBANG
 				&& pm->ps->weapon != WP_TRIP_MINE
 				&& pm->ps->weapon != WP_DET_PACK
 				&& !G_IsRidingVehicle(pm->gent))
@@ -13029,6 +13029,7 @@ static bool PM_DoChargedWeapons( void )
 		break;
 
 	//------------------
+	case WP_FLASHBANG:
 	case WP_THERMAL:
 		//			FIXME: Really should have a wind-up anim for player
 		//			as he holds down the fire button to throw, then play
@@ -13441,7 +13442,7 @@ static void PM_Weapon( void )
 				pm->gent->client->fireDelay = 0;
 				delayed_fire = qtrue;
 				if ( (pm->ps->clientNum < MAX_CLIENTS||PM_ControlledByPlayer())
-					&& pm->ps->weapon == WP_THERMAL
+					&& pm->ps->weapon == WP_THERMAL || pm->ps->weapon == WP_FLASHBANG
 					&& pm->gent->alt_fire )
 				{
 					pm->cmd.buttons |= BUTTON_ALT_ATTACK;
@@ -13546,7 +13547,7 @@ static void PM_Weapon( void )
 
 	if ( pm->gent )
 	{//ready to throw thermal again, add it
-		if ( pm->ps->weapon == WP_THERMAL
+		if ( pm->ps->weapon == WP_THERMAL || pm->ps->weapon == WP_FLASHBANG
 			&& pm->gent->weaponModel[0] == -1 )
 		{//add the thermal model back in our hand
 			// remove anything if we have anything already
@@ -13573,7 +13574,7 @@ static void PM_Weapon( void )
 		{
 			if ( !pm->gent->client->fireDelay//not already waiting to fire
 				&& (pm->ps->clientNum < MAX_CLIENTS||PM_ControlledByPlayer())//player
-				&& pm->ps->weapon == WP_THERMAL//holding thermal
+				&& pm->ps->weapon == WP_THERMAL || pm->ps->weapon == WP_FLASHBANG//holding thermal
 				&& pm->gent//gent
 				&& pm->gent->client//client
 				&& (pm->cmd.buttons&(BUTTON_ATTACK|BUTTON_ALT_ATTACK)) )//holding fire
@@ -13881,6 +13882,7 @@ static void PM_Weapon( void )
 				break;
 
 			case WP_THERMAL:
+			case WP_FLASHBANG:
 				if ( (pm->ps->clientNum >= MAX_CLIENTS&&!PM_ControlledByPlayer()) )
 				{
 					if ( PM_StandingAnim( pm->ps->legsAnim ) )
@@ -14016,7 +14018,7 @@ static void PM_Weapon( void )
 	{
 		PM_AddEvent( EV_ALT_FIRE );
 		addTime = weaponData[pm->ps->weapon].altFireTime;
-		if ( pm->ps->weapon == WP_THERMAL )
+		if ( pm->ps->weapon == WP_THERMAL || pm->ps->weapon == WP_FLASHBANG )
 		{//threw our thermal
 			if ( pm->gent )
 			{// remove the thermal model if we had it.
@@ -14032,7 +14034,7 @@ static void PM_Weapon( void )
 	{
 		if ( pm->ps->clientNum //NPC
 			&& !PM_ControlledByPlayer() //not under player control
-			&& pm->ps->weapon == WP_THERMAL //using thermals
+			&& pm->ps->weapon == WP_THERMAL || pm->ps->weapon == WP_FLASHBANG //using thermals
 			&& pm->ps->torsoAnim != BOTH_ATTACK10 )//not in the throw anim
 		{//oops, got knocked out of the anim, don't throw the thermal
 			return;
@@ -14050,6 +14052,7 @@ static void PM_Weapon( void )
 			addTime *= (( trueCount < 3 ) ? 0.35f : 1.0f );// if you only did a small charge shot with the bowcaster, use less time between shots
 			break;
 		case WP_THERMAL:
+		case WP_FLASHBANG:
 			if ( pm->gent )
 			{// remove the thermal model if we had it.
 				G_RemoveWeaponModels( pm->gent );
@@ -14097,7 +14100,7 @@ static void PM_Weapon( void )
 	// HACK!!!!!
 	if ( pm->ps->ammo[weaponData[pm->ps->weapon].ammoIndex] <= 0 )
 	{
-		if ( pm->ps->weapon == WP_THERMAL || pm->ps->weapon == WP_TRIP_MINE )
+		if ( pm->ps->weapon == WP_THERMAL || pm->ps->weapon == WP_FLASHBANG || pm->ps->weapon == WP_TRIP_MINE )
 		{
 			// because these weapons have the ammo attached to the hand, we should switch weapons when the last one is thrown, otherwise it will look silly
 			//	NOTE: could also switch to an empty had version, but was told we aren't getting any new models at this point
@@ -14664,6 +14667,7 @@ qboolean PM_WeaponOkOnVehicle( int weapon )
 	case WP_SABER:
 	case WP_BLASTER:
 	case WP_THERMAL:
+	case WP_FLASHBANG:
 		return qtrue;
 		break;
 	}
@@ -15080,7 +15084,7 @@ void Pmove( pmove_t *pmove )
 		{//inside a vehicle?  don't do any weapon stuff
 		}
 		else if ( pm->ps->weapon == WP_BLASTER//using blaster
-		 || pm->ps->weapon == WP_THERMAL//using thermal
+		 || pm->ps->weapon == WP_THERMAL || pm->ps->weapon == WP_FLASHBANG//using thermal
 		 || pm->ps->weaponstate == WEAPON_DROPPING//changing weapon - dropping
 		 || pm->ps->weaponstate == WEAPON_RAISING//changing weapon - raising
 		 || (pm->cmd.weapon != pm->ps->weapon && PM_WeaponOkOnVehicle( pm->cmd.weapon )) )//FIXME: make this a vehicle call to see if this new weapon is valid for this vehicle

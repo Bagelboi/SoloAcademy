@@ -393,7 +393,7 @@ void G_BounceMissile( gentity_t *ent, trace_t *trace ) {
 		// check for stop
 		if ( trace->plane.normal[2] > 0.7 && ent->s.pos.trDelta[2] < 40 ) //this can happen even on very slightly sloped walls, so changed it from > 0 to > 0.7
 		{
-			if ( ent->s.weapon == WP_THERMAL )
+			if ( ent->s.weapon == WP_THERMAL || ent->s.weapon == WP_FLASHBANG )
 			{//roll when you "stop"
 				ent->s.pos.trType = TR_INTERPOLATE;
 			}
@@ -405,7 +405,7 @@ void G_BounceMissile( gentity_t *ent, trace_t *trace ) {
 			}
 		}
 
-		if ( ent->s.weapon == WP_THERMAL )
+		if ( ent->s.weapon == WP_THERMAL || ent->s.weapon == WP_FLASHBANG)
 		{
 			ent->has_bounced = qtrue;
 		}
@@ -435,6 +435,7 @@ void G_BounceMissile( gentity_t *ent, trace_t *trace ) {
 
 	if ( ent->s.weapon != WP_SABER
 		&& ent->s.weapon != WP_THERMAL
+		&& ent->s.weapon != WP_FLASHBANG
 		&& ent->e_clThinkFunc != clThinkF_CG_Limb
 		&& ent->e_ThinkFunc != thinkF_LimbThink )
 	{//not a saber, bouncing thermal or limb
@@ -611,7 +612,7 @@ void G_MissileImpacted( gentity_t *ent, gentity_t *other, vec3_t impactPos, vec3
 static void G_MissileAddAlerts( gentity_t *ent )
 {
 	//Add the event
-	if ( ent->s.weapon == WP_THERMAL && ((ent->delay-level.time) < 2000 || ent->s.pos.trType == TR_INTERPOLATE) )
+	if ( ent->s.weapon == WP_THERMAL || ent->s.weapon == WP_FLASHBANG && ((ent->delay-level.time) < 2000 || ent->s.pos.trType == TR_INTERPOLATE) )
 	{//a thermal about to explode or rolling
 		if ( (ent->delay-level.time) < 500 )
 		{//half a second before it explodes!
@@ -761,7 +762,7 @@ void G_MissileImpact( gentity_t *ent, trace_t *trace, int hitLoc=HL_NONE )
 	}
 
 	if ( (!other->takedamage || (other->client && other->health <= 0))
-		&& ent->s.weapon == WP_THERMAL
+		&& ent->s.weapon == WP_THERMAL || ent->s.weapon == WP_FLASHBANG
 		&& !ent->alt_fire )
 	{//rolling thermal det - FIXME: make this an eFlag like bounce & stick!!!
 		//G_BounceRollMissile( ent, trace );
@@ -1483,7 +1484,7 @@ void G_RunMissile( gentity_t *ent )
 
 	if ( tr.fraction == 1 )
 	{
-		if ( ent->s.weapon == WP_THERMAL && ent->s.pos.trType == TR_INTERPOLATE )
+		if ( ent->s.weapon == WP_THERMAL || ent->s.weapon == WP_FLASHBANG && ent->s.pos.trType == TR_INTERPOLATE )
 		{//a rolling thermal that didn't hit anything
 			G_MissileAddAlerts( ent );
 		}

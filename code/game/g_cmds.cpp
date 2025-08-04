@@ -999,6 +999,7 @@ void G_SoloHook(gentity_t* ent) {
 
 
 					gi.linkentity(grappleEnt);
+					NPC_SetAnim(ent, SETANIM_TORSO, BOTH_FORCEPUSH, SETANIM_FLAG_OVERRIDE | SETANIM_FLAG_HOLD | SETANIM_FLAG_RESTART);
 				}
 			} 
 		}
@@ -1008,6 +1009,7 @@ void G_SoloHook(gentity_t* ent) {
 				grapple_ent_existing->s.pos.trType = TR_LINEAR;
 				grapple_ent_existing->clipmask = CONTENTS_NONE;
 				ent->client->ps.grappleHookState = SOLO_GRAPPLE_REELOUT;
+				NPC_SetAnim(ent, SETANIM_TORSO, BOTH_FORCEPULL, SETANIM_FLAG_OVERRIDE | SETANIM_FLAG_HOLD | SETANIM_FLAG_RESTART);
 			} else if (!grapple_ent_existing) {
 				ent->client->ps.grappleHookEntNum = -1;
 				ent->client->ps.grappleHookState = SOLO_GRAPPLE_NONE;

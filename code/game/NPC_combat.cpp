@@ -329,6 +329,9 @@ void G_AttackDelay( gentity_t *self, gentity_t *enemy )
 		case WP_THERMAL://grenade-throwing has a built-in delay
 			return;
 			break;
+		case WP_FLASHBANG://grenade-throwing has a built-in delay
+			return;
+			break;
 		case WP_MELEE:			// Any ol' melee attack
 			return;
 			break;
@@ -558,7 +561,7 @@ void G_SetEnemy( gentity_t *self, gentity_t *enemy )
 		}
 
 		if ( self->s.weapon == WP_BLASTER || self->s.weapon == WP_REPEATER ||
-			self->s.weapon == WP_THERMAL || self->s.weapon == WP_BLASTER_PISTOL
+			self->s.weapon == WP_THERMAL || self->s.weapon == WP_BLASTER_PISTOL || self->s.weapon == WP_FLASHBANG
 			|| self->s.weapon == WP_BOWCASTER )
 		{//Hmm, how about sniper and bowcaster?
 			//When first get mad, aim is bad
@@ -879,6 +882,7 @@ void ChangeWeapon( gentity_t *ent, int newWeapon )
 		}
 		break;
 
+	case WP_FLASHBANG:
 	case WP_THERMAL:
 		ent->NPC->aiFlags &= ~NPCAI_BURST_WEAPON;
 	//	ent->NPC->burstSpacing = 3000;//attackdebounce
@@ -1065,6 +1069,7 @@ void NPC_ApplyWeaponFireDelay(void)
 		client->fireDelay = 500;
 		break;
 
+	case WP_FLASHBANG:
 	case WP_THERMAL:
 		if ( client->ps.clientNum )
 		{//NPCs delay...
@@ -2236,7 +2241,7 @@ int NPC_ShotEntity( gentity_t *ent, vec3_t impactPos )
 	vec3_t targ;
 	trace_t	tr;
 
-	if ( NPC->s.weapon == WP_THERMAL )
+	if ( NPC->s.weapon == WP_THERMAL || NPC->s.weapon == WP_FLASHBANG )
 	{//thermal aims from slightly above head
 		//FIXME: what about low-angle shots, rolling the thermal under something?
 		vec3_t	angles, forward, end;
@@ -2564,6 +2569,7 @@ float IdealDistance ( gentity_t *self )
 		ideal += 200;
 		break;
 
+	case WP_FLASHBANG:
 	case WP_THERMAL:
 		ideal += 50;
 		break;

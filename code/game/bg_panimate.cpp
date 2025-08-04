@@ -6027,6 +6027,7 @@ void PM_TorsoAnimation( void )
 				case WP_BOT_LASER:
 					PM_SetAnim(pm,SETANIM_TORSO,TORSO_WEAPONIDLE2,SETANIM_FLAG_OVERRIDE|SETANIM_FLAG_RESTART|SETANIM_FLAG_HOLD);
 					break;
+				case WP_FLASHBANG:
 				case WP_THERMAL:
 					if ( pm->ps->weaponstate != WEAPON_FIRING
 						&& pm->ps->weaponstate != WEAPON_CHARGING
@@ -6346,6 +6347,7 @@ void PM_TorsoAnimation( void )
 					PM_SetAnim(pm,SETANIM_TORSO,TORSO_WEAPONIDLE2,SETANIM_FLAG_OVERRIDE|SETANIM_FLAG_RESTART|SETANIM_FLAG_HOLD);
 					break;
 
+				case WP_FLASHBANG:
 				case WP_THERMAL:
 					if ( PM_RunningAnim( pm->ps->legsAnim )
 						|| PM_WalkingAnim( pm->ps->legsAnim )

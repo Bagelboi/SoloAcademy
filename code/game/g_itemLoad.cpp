@@ -244,6 +244,8 @@ static void IT_Name(const char **holdBuf)
 		itemNum = ITM_GOODIE_KEY_PICKUP;
 	else if (!Q_stricmp(tokenStr,"ITM_SECURITY_KEY_PICKUP"))
 		itemNum = ITM_SECURITY_KEY_PICKUP;
+	else if (!Q_stricmp(tokenStr, "ITM_AMMO_FLASH_PICKUP"))
+		itemNum = ITM_AMMO_FLASH_PICKUP;
 	else
 	{
 		itemNum = 0;

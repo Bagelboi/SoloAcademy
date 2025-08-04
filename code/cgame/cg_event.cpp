@@ -145,6 +145,7 @@ void CG_ItemPickup( int itemNum, qboolean bHadItem ) {
 					!(nNewWpn == WP_DET_PACK) &&
 					!(nNewWpn == WP_TRIP_MINE) &&
 					!(nNewWpn == WP_THERMAL) &&
+					!(nNewWpn == WP_FLASHBANG) &&
 					!(nNewWpn == WP_ROCKET_LAUNCHER) &&
 					!(nNewWpn == WP_CONCUSSION) )
 			{

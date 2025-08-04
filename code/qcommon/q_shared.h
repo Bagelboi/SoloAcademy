@@ -808,7 +808,7 @@ typedef enum {
 
 #define	MAX_POWERUPS			16
 #define	MAX_WEAPONS				32
-#define MAX_AMMO				10
+#define MAX_AMMO				11
 #define MAX_INVENTORY			15		// See INV_MAX
 #define MAX_SECURITY_KEYS		5
 #define MAX_SECURITY_KEY_MESSSAGE		24

@@ -78,7 +78,7 @@ typedef enum //# weapon_e
 	WP_TUSKEN_STAFF,
 	WP_SCEPTER,
 	WP_NOGHRI_STICK,
-
+	WP_FLASHBANG,
 	//# #eol
 	WP_NUM_WEAPONS
 } weapon_t;
@@ -99,6 +99,7 @@ typedef enum //# ammo_e
 	AMMO_THERMAL,
 	AMMO_TRIPMINE,
 	AMMO_DETPACK,
+	AMMO_FLASH,
 	AMMO_MAX
 } ammo_t;
 

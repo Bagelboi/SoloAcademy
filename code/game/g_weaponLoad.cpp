@@ -207,6 +207,7 @@ const int defaultDamage[] = {
 	0,							// WP_TUSKEN_STAFF
 	0,							// WP_SCEPTER
 	0,							// WP_NOGHRI_STICK
+	0							// WP_FLASHBANG
 };
 
 const int defaultAltDamage[] = {
@@ -244,6 +245,7 @@ const int defaultAltDamage[] = {
 	0,						// WP_TUSKEN_STAFF
 	0,						// WP_SCEPTER
 	0,						// WP_NOGHRI_STICK
+	0							// WP_FLASHBANG
 };
 
 const int defaultSplashDamage[] = {
@@ -281,6 +283,7 @@ const int defaultSplashDamage[] = {
 	0,								// WP_TUSKEN_STAFF
 	0,								// WP_SCEPTER
 	0,								// WP_NOGHRI_STICK
+	0							// WP_FLASHBANG
 };
 
 const float defaultSplashRadius[] = {
@@ -318,6 +321,7 @@ const float defaultSplashRadius[] = {
 	0.0f,							// WP_TUSKEN_STAFF
 	0.0f,							// WP_SCEPTER
 	0.0f,							// WP_NOGHRI_STICK
+	LT_SPLASH_RAD,					// WP_FLASHBANG
 };
 
 const int defaultAltSplashDamage[] = {
@@ -355,6 +359,7 @@ const int defaultAltSplashDamage[] = {
 	0,								// WP_TUSKEN_STAFF
 	0,								// WP_SCEPTER
 	0,								// WP_NOGHRI_STICK
+	0,					// WP_FLASHBANG
 };
 
 const float defaultAltSplashRadius[] = {
@@ -392,6 +397,7 @@ const float defaultAltSplashRadius[] = {
 	0.0f,							// WP_TUSKEN_STAFF
 	0.0f,							// WP_SCEPTER
 	0.0f,							// WP_NOGHRI_STICK
+	LT_SPLASH_RAD,					// WP_FLASHBANG
 };
 
 wpnParms_t WpnParms[] =
@@ -525,6 +531,8 @@ void WPN_WeaponType( const char **holdBuf)
 		weaponNum = WP_SCEPTER;
 	else if (!Q_stricmp(tokenStr,"WP_NOGHRI_STICK"))
 		weaponNum = WP_NOGHRI_STICK;
+	else if (!Q_stricmp(tokenStr, "WP_FLASHBANG"))
+		weaponNum = WP_FLASHBANG;
 	else
 	{
 		weaponNum = 0;
@@ -916,6 +924,8 @@ void WPN_Ammo(const char **holdBuf)
 		wpnParms.ammoNum = AMMO_EMPLACED;
 	else if (!Q_stricmp(tokenStr,"AMMO_THERMAL"))
 		wpnParms.ammoNum = AMMO_THERMAL;
+	else if (!Q_stricmp(tokenStr, "AMMO_FLASH"))
+		wpnParms.ammoNum = AMMO_FLASH;
 	else if (!Q_stricmp(tokenStr,"AMMO_TRIPMINE"))
 		wpnParms.ammoNum = AMMO_TRIPMINE;
 	else if (!Q_stricmp(tokenStr,"AMMO_DETPACK"))

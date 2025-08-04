@@ -896,6 +896,7 @@ qboolean AI_RefreshGroup( AIGroupInfo_t *group )
 		case WP_THERMAL:
 			group->morale -= 5;
 			break;
+		case WP_FLASHBANG:
 		case WP_TRIP_MINE:
 			group->morale -= 3;
 			break;

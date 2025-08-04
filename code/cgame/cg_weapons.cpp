@@ -533,6 +533,15 @@ void CG_RegisterWeapon( int weaponNum ) {
 		cgi_S_RegisterSound( "sound/weapons/laser_trap/hum_loop.wav" );
 		break;
 
+	case WP_FLASHBANG:
+		theFxScheduler.RegisterEffect("thermal/shockwave");
+		theFxScheduler.RegisterEffect("howler/sonic");
+		cgs.media.grenadeBounce1 = cgi_S_RegisterSound("sound/weapons/thermal/bounce1.wav");
+		cgs.media.grenadeBounce2 = cgi_S_RegisterSound("sound/weapons/thermal/bounce2.wav");
+
+		cgi_S_RegisterSound("sound/weapons/thermal/thermloop.wav");
+		cgi_S_RegisterSound("sound/weapons/thermal/warning.wav");
+		break;
 	case WP_DET_PACK:
 		theFxScheduler.RegisterEffect( "detpack/explosion.efx" );
 
@@ -668,6 +677,9 @@ void CG_RegisterItemVisuals( int itemNum ) {
 			break;
 		case AMMO_TRIPMINE:
 			CG_RegisterWeapon( WP_TRIP_MINE );
+			break;
+		case AMMO_FLASH:
+			CG_RegisterWeapon(WP_FLASHBANG);
 			break;
 		case AMMO_DETPACK:
 			CG_RegisterWeapon( WP_DET_PACK );
@@ -1414,7 +1426,7 @@ int CG_WeaponCheck( int weaponIndex )
 
 int cgi_UI_GetItemText(char *menuFile,char *itemName, char *text);
 
-const char *weaponDesc[13] =
+const char *weaponDesc[14] =
 {
 "SABER_DESC",
 "NEW_BLASTER_PISTOL_DESC",
@@ -1429,6 +1441,7 @@ const char *weaponDesc[13] =
 "TRIP_MINE_DESC",
 "DET_PACK_DESC",
 "CONCUSSION_DESC",
+"FLASHBANG_DESC"
 };
 
 /*
@@ -2494,6 +2507,14 @@ void CG_ChangeWeapon( int num )
 		}
 	}
 
+	if (num == WP_FLASHBANG)
+	{
+		if (cg.snap && cg.snap->ps.ammo[AMMO_FLASH] <= 0)
+		{
+			return;
+		}
+	}
+
 	// because we don't have an empty hand model for the thermal, don't allow selecting that weapon if it has no ammo
 	if ( num == WP_TRIP_MINE )
 	{
@@ -2702,7 +2723,7 @@ void CG_OutOfAmmoChange( void ) {
 			{
 				if ( i == WP_DET_PACK && cg.snap->ps.ammo[weaponData[i].ammoIndex] <= 0 )
 				{
-					// crap, no point in switching to this
+					break;
 				}
 				else
 				{
@@ -2842,6 +2863,7 @@ void CG_BounceEffect( centity_t *cent, int weapon, vec3_t origin, vec3_t normal 
 {
 	switch( weapon )
 	{
+	case WP_FLASHBANG:
 	case WP_THERMAL:
 		if ( rand() & 1 ) {
 			cgi_S_StartSound( origin, ENTITYNUM_WORLD, CHAN_AUTO, cgs.media.grenadeBounce1 );
@@ -3010,7 +3032,10 @@ void CG_MissileHitWall( centity_t *cent, int weapon, vec3_t origin, vec3_t dir, 
 			theFxScheduler.PlayEffect( "atst/side_main_impact", origin, dir );
 		}
 		break;
-
+	case WP_FLASHBANG:
+		theFxScheduler.PlayEffect("howler/sonic", origin);
+		theFxScheduler.PlayEffect("thermal/shockwave", origin);
+		break;
 	case WP_TRIP_MINE:
 		theFxScheduler.PlayEffect( "tripmine/explosion", origin, dir );
 		break;
@@ -3136,7 +3161,10 @@ void CG_MissileHitPlayer( centity_t *cent, int weapon, vec3_t origin, vec3_t dir
 	case WP_EMPLACED_GUN:
 		FX_EmplacedHitPlayer( origin, dir, (qboolean)(cent->gent&&cent->gent->alt_fire) );
 		break;
-
+	case WP_FLASHBANG:
+		theFxScheduler.PlayEffect("howler/sonic", origin);
+		theFxScheduler.PlayEffect("thermal/shockwave", origin);
+		break;
 	case WP_TRIP_MINE:
 		theFxScheduler.PlayEffect( "tripmine/explosion", origin, dir );
 		break;

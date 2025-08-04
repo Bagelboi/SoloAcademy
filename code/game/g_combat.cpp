@@ -124,6 +124,7 @@ Toss the weapon and powerups for the killed player
 =================
 */
 extern gentity_t *WP_DropThermal( gentity_t *ent );
+extern gentity_t* WP_drop_flashbang(gentity_t* ent);
 extern qboolean WP_SaberLose( gentity_t *self, vec3_t throwDir );
 gentity_t *TossClientItems( gentity_t *self )
 {
@@ -190,10 +191,13 @@ gentity_t *TossClientItems( gentity_t *self )
 	{
 		self->s.weapon = WP_NONE;
 
-		if ( weapon == WP_THERMAL && self->client->ps.torsoAnim == BOTH_ATTACK10 )
+		if ( self->client->ps.torsoAnim == BOTH_ATTACK10 )
 		{//we were getting ready to throw the thermal, drop it!
 			self->client->ps.weaponChargeTime = level.time - FRAMETIME;//so it just kind of drops it
-			dropped = WP_DropThermal( self );
+			if (self->s.weapon == WP_THERMAL)
+				dropped = WP_DropThermal( self );
+			else if (self->s.weapon == WP_FLASHBANG)
+				dropped = WP_drop_flashbang(self);
 		}
 		else
 		{// find the item type for this weapon
@@ -246,6 +250,7 @@ gentity_t *TossClientItems( gentity_t *self )
 					dropped->count = 200;//12;
 					break;
 				case WP_THERMAL:
+				case WP_FLASHBANG:
 					dropped->count = 4;
 					break;
 				case WP_TRIP_MINE:
@@ -265,7 +270,8 @@ gentity_t *TossClientItems( gentity_t *self )
 			// well, dropped weapons are G2 models, so they have to be initialised if they want to draw..give us a radius so we don't get prematurely culled
 			if ( weapon != WP_THERMAL
 				&& weapon != WP_TRIP_MINE
-				&& weapon != WP_DET_PACK )
+				&& weapon != WP_DET_PACK
+				&& weapon != WP_FLASHBANG)
 			{
 				gi.G2API_InitGhoul2Model( dropped->ghoul2, item->world_model, G_ModelIndex( item->world_model ), NULL_HANDLE, NULL_HANDLE, 0, 0);
 				dropped->s.radius = 10;

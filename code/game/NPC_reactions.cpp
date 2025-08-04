@@ -225,7 +225,7 @@ void NPC_ChoosePainAnimation( gentity_t *self, gentity_t *other, const vec3_t po
 	int		pain_anim = -1;
 	float	pain_chance;
 
-	if ( self->s.weapon == WP_THERMAL && self->client->fireDelay > 0 )
+	if ( self->s.weapon == WP_THERMAL || self->s.weapon == WP_FLASHBANG && self->client->fireDelay > 0 )
 	{//don't interrupt thermal throwing anim
 		return;
 	}

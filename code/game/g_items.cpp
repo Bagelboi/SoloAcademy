@@ -145,6 +145,9 @@ int Add_Ammo2 (gentity_t *ent, int ammoType, int count)
 		// since the ammo is the weapon in this case, picking up ammo should actually give you the weapon
 		switch( ammoType )
 		{
+		case AMMO_FLASH:
+			ent->client->ps.stats[STAT_WEAPONS] |= (1 << WP_FLASHBANG);
+			break;
 		case AMMO_THERMAL:
 			ent->client->ps.stats[STAT_WEAPONS] |= ( 1 << WP_THERMAL );
 			break;
@@ -991,7 +994,8 @@ gentity_t *LaunchItem( gitem_t *item, const vec3_t origin, const vec3_t velocity
 		if ( item->giTag != WP_BOWCASTER
 			&& item->giTag != WP_THERMAL
 			&& item->giTag != WP_TRIP_MINE
-			&& item->giTag != WP_DET_PACK )
+			&& item->giTag != WP_DET_PACK
+			&& item->giTag != WP_FLASHBANG)
 		{
 			VectorSet( dropped->s.angles, 0, Q_flrand(-1.0f, 1.0f) * 180, 90.0f );
 			G_SetAngles( dropped, dropped->s.angles );

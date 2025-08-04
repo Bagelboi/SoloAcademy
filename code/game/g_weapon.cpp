@@ -76,6 +76,7 @@ float weaponSpeed[WP_NUM_WEAPONS][2] =
 	{ 0,0 },//WP_TUSKEN_STAFF,
 	{ 0,0 },//WP_SCEPTER,
 	{ 0,0 },//WP_NOGHRI_STICK,
+	{ TD_VELOCITY,TD_ALT_VELOCITY },//WP_FLASHBANG
 };
 
 float WP_SpeedOfMissileForWeapon( int wp, qboolean alt_fire )
@@ -480,6 +481,7 @@ void CalcMuzzlePoint( gentity_t *const ent, vec3_t forwardVec, vec3_t right, vec
 	case WP_ROCKET_LAUNCHER:
 	case WP_CONCUSSION:
 	case WP_THERMAL:
+	case WP_FLASHBANG:
 		ViewHeightFix(ent);
 		muzzlePoint[2] += ent->client->ps.viewheight;//By eyes
 		muzzlePoint[2] -= 2;
@@ -1440,6 +1442,10 @@ void FireWeapon( gentity_t *ent, qboolean alt_fire )
 
 	case WP_THERMAL:
 		WP_FireThermalDetonator( ent, alt_fire );
+		break;
+
+	case WP_FLASHBANG:
+		WP_fire_flashbang(ent, alt_fire);
 		break;
 
 	case WP_TRIP_MINE:

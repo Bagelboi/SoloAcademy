@@ -2064,7 +2064,7 @@ void NPC_RunBehavior( int team, int bState )
 				return;
 			}
 			if ( NPC->client->ps.weapon == WP_THERMAL
-				|| NPC->client->ps.weapon == WP_MELEE )//FIXME: separate AI for melee fighters
+				|| NPC->client->ps.weapon == WP_MELEE || NPC->client->ps.weapon == WP_FLASHBANG )//FIXME: separate AI for melee fighters
 			{//a grenadier
 				NPC_BehaviorSet_Grenadier( bState );
 				return;

@@ -1,6 +1,7 @@
 #include "g_local.h"
 #include "w_local.h"
 #include "g_functions.h"
+#include "b_local.h"
 
 void grapple_hook_think(gentity_t* self)
 {
@@ -17,6 +18,7 @@ void grapple_hook_think(gentity_t* self)
 					self->s.pos.trType = TR_LINEAR;
 					self->clipmask = CONTENTS_NONE;
 					self->owner->client->ps.grappleHookState = SOLO_GRAPPLE_REELOUT;
+					NPC_SetAnim(self->owner, SETANIM_TORSO, BOTH_FORCEPULL, SETANIM_FLAG_OVERRIDE | SETANIM_FLAG_HOLD | SETANIM_FLAG_RESTART);
 					break;
 				}
 
@@ -58,6 +60,7 @@ void grapple_hook_think(gentity_t* self)
 							self->s.pos.trType = TR_LINEAR;
 							self->clipmask = CONTENTS_NONE;
 							self->owner->client->ps.grappleHookState = SOLO_GRAPPLE_REELOUT;
+							NPC_SetAnim(self->owner, SETANIM_TORSO, BOTH_FORCEPULL, SETANIM_FLAG_OVERRIDE | SETANIM_FLAG_HOLD | SETANIM_FLAG_RESTART);
 							break;
 						}
 					}

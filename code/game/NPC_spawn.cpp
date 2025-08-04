@@ -466,6 +466,7 @@ void NPC_SetMiscDefaultData( gentity_t *ent )
 			case WP_CONCUSSION:
 			default:
 				break;
+			case WP_FLASHBANG:
 			case WP_THERMAL:
 			case WP_BLASTER:
 				//FIXME: health in NPCs.cfg, and not all blaster users are stormtroopers
@@ -592,6 +593,7 @@ void NPC_SetMiscDefaultData( gentity_t *ent )
 					break;
 				case WP_CONCUSSION:
 					break;
+				case WP_FLASHBANG:
 				case WP_THERMAL:
 					//Gran, use main, bouncy fire
 //					ent->NPC->scriptFlags |= SCF_ALT_FIRE;
