@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\CMakeFiles\6037744f0ef10493edb533eea44263ee\PACKAGE_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{46070449-C441-36D3-89B1-E24A18510F02}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

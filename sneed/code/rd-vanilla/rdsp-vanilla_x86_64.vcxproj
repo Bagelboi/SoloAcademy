@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3F15D76C-AF19-30DE-99AE-F540B585F6DF}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>SP Vanilla Renderer</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">rdsp-vanilla_x86_64.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">rdsp-vanilla_x86_64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">rdsp-vanilla_x86_64.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">rdsp-vanilla_x86_64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">rdsp-vanilla_x86_64.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">rdsp-vanilla_x86_64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">rdsp-vanilla_x86_64.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">rdsp-vanilla_x86_64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\jpeg-9a\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\libpng\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\zlib\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\minizip\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_DEBUG;RENDERER;_JK2EXE;CMAKE_INTDIR="Debug";rdsp_vanilla_x86_64_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;RENDERER;_JK2EXE;CMAKE_INTDIR=\"Debug\";rdsp_vanilla_x86_64_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\jpeg-9a\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\libpng\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\zlib\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\minizip\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\jpeg-9a\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\libpng\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\zlib\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\minizip\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lib\jpeg-9a\Debug\bundled_libjpeg.lib;..\..\lib\libpng\Debug\bundled_libpng.lib;..\..\lib\zlib\Debug\bundled_zlib.lib;..\..\lib\minizip\Debug\bundled_minizip.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/rd-vanilla/Debug/rdsp-vanilla_x86_64.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/Debug/rdsp-vanilla_x86_64.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\jpeg-9a\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\libpng\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\zlib\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\minizip\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;FINAL_BUILD;RENDERER;_JK2EXE;CMAKE_INTDIR="Release";rdsp_vanilla_x86_64_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;FINAL_BUILD;RENDERER;_JK2EXE;CMAKE_INTDIR=\"Release\";rdsp_vanilla_x86_64_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\jpeg-9a\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\libpng\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\zlib\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\minizip\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\jpeg-9a\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\libpng\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\zlib\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\minizip\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lib\jpeg-9a\Release\bundled_libjpeg.lib;..\..\lib\libpng\Release\bundled_libpng.lib;..\..\lib\zlib\Release\bundled_zlib.lib;..\..\lib\minizip\Release\bundled_minizip.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/rd-vanilla/Release/rdsp-vanilla_x86_64.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/Release/rdsp-vanilla_x86_64.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\jpeg-9a\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\libpng\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\zlib\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\minizip\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;FINAL_BUILD;RENDERER;_JK2EXE;CMAKE_INTDIR="MinSizeRel";rdsp_vanilla_x86_64_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;FINAL_BUILD;RENDERER;_JK2EXE;CMAKE_INTDIR=\"MinSizeRel\";rdsp_vanilla_x86_64_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\jpeg-9a\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\libpng\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\zlib\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\minizip\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\jpeg-9a\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\libpng\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\zlib\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\minizip\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lib\jpeg-9a\MinSizeRel\bundled_libjpeg.lib;..\..\lib\libpng\MinSizeRel\bundled_libpng.lib;..\..\lib\zlib\MinSizeRel\bundled_zlib.lib;..\..\lib\minizip\MinSizeRel\bundled_minizip.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/rd-vanilla/MinSizeRel/rdsp-vanilla_x86_64.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/MinSizeRel/rdsp-vanilla_x86_64.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\jpeg-9a\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\libpng\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\zlib\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\minizip\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;FINAL_BUILD;RENDERER;_JK2EXE;CMAKE_INTDIR="RelWithDebInfo";rdsp_vanilla_x86_64_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;FINAL_BUILD;RENDERER;_JK2EXE;CMAKE_INTDIR=\"RelWithDebInfo\";rdsp_vanilla_x86_64_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\jpeg-9a\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\libpng\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\zlib\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\minizip\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\jpeg-9a\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\libpng\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\zlib\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\minizip\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\lib\jpeg-9a\RelWithDebInfo\bundled_libjpeg.lib;..\..\lib\libpng\RelWithDebInfo\bundled_libpng.lib;..\..\lib\zlib\RelWithDebInfo\bundled_zlib.lib;..\..\lib\minizip\RelWithDebInfo\bundled_minizip.lib;opengl32.lib;glu32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/rd-vanilla/RelWithDebInfo/rdsp-vanilla_x86_64.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/RelWithDebInfo/rdsp-vanilla_x86_64.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/code/rd-vanilla/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Lipkin/Desktop/Workshop/SoloAcademy -BC:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed --check-stamp-file C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/rd-vanilla/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\code\rd-vanilla\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/code/rd-vanilla/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Lipkin/Desktop/Workshop/SoloAcademy -BC:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed --check-stamp-file C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/rd-vanilla/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\code\rd-vanilla\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/code/rd-vanilla/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Lipkin/Desktop/Workshop/SoloAcademy -BC:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed --check-stamp-file C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/rd-vanilla/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\code\rd-vanilla\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/code/rd-vanilla/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Lipkin/Desktop/Workshop/SoloAcademy -BC:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed --check-stamp-file C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/rd-vanilla/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.31\Modules\FindOpenGL.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.31\Modules\FindPackageMessage.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\code\rd-vanilla\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ghoul2\G2.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ghoul2\ghoul2_gore.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\G2_API.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\G2_bolts.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\G2_bones.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\G2_misc.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\G2_surfaces.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\matcomp.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\q_shared.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\q_shared.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_i_saved_game.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_saved_game_class_archivers.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_saved_game_helper.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_saved_game_helper_fwd.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_scope_guard.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_color.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_color.c" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_math.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_math.c" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_string.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_string.c" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_platform.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared\qcommon\q_version.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\gsl.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\string.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\string.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\sscanf.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\limited_vector.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\glext.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\qgl.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_arb.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_backend.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_bsp.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_cmds.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_curve.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_draw.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_ghoul2.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_image.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_init.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_light.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_local.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_main.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_marks.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_mesh.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_model.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_quicksprite.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_quicksprite.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_scene.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_shade.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_shade_calc.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_shader.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_shadows.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_skin.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_sky.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_stl.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_stl.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_subs.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_surface.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_surfacesprites.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_world.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_WorldEffects.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-vanilla\tr_WorldEffects.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\mdx_format.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\tr_common.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\tr_font.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\tr_font.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\tr_image_load.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\tr_image_jpg.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\tr_image_tga.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\tr_image_png.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\tr_noise.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\tr_public.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\tr_types.h" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\ZERO_CHECK.vcxproj">
+      <Project>{536F2D89-8748-321B-AF85-BEDAB73977A2}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\lib\jpeg-9a\bundled_libjpeg.vcxproj">
+      <Project>{82496036-E067-3B56-BE5E-326AA6750C59}</Project>
+      <Name>bundled_libjpeg</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\lib\libpng\bundled_libpng.vcxproj">
+      <Project>{2D07CF05-28B6-3D7C-945C-82B62CD35BF9}</Project>
+      <Name>bundled_libpng</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\lib\minizip\bundled_minizip.vcxproj">
+      <Project>{C88BCF49-A844-358A-B230-B79C4CA2AB93}</Project>
+      <Name>bundled_minizip</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\lib\zlib\bundled_zlib.vcxproj">
+      <Project>{A49F266F-678A-3740-B2B4-B165DC47147B}</Project>
+      <Name>bundled_zlib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

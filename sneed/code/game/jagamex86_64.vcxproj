@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7EB93157-53A9-3A42-829E-242B9BE3D872}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>SP Game Library</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">jagamex86_64.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">jagamex86_64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">jagamex86_64.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">jagamex86_64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">jagamex86_64.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">jagamex86_64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">jagamex86_64.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">jagamex86_64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode>
+      </SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;_DEBUG;SP_GAME;CMAKE_INTDIR="Debug";jagamex86_64_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;SP_GAME;CMAKE_INTDIR=\"Debug\";jagamex86_64_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/game/Debug/jagamex86_64.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/Debug/jagamex86_64.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode>
+      </SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;FINAL_BUILD;SP_GAME;CMAKE_INTDIR="Release";jagamex86_64_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;FINAL_BUILD;SP_GAME;CMAKE_INTDIR=\"Release\";jagamex86_64_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/game/Release/jagamex86_64.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/Release/jagamex86_64.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode>
+      </SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;FINAL_BUILD;SP_GAME;CMAKE_INTDIR="MinSizeRel";jagamex86_64_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;FINAL_BUILD;SP_GAME;CMAKE_INTDIR=\"MinSizeRel\";jagamex86_64_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/game/MinSizeRel/jagamex86_64.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/MinSizeRel/jagamex86_64.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild>
+      </MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode>
+      </SupportJustMyCode>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;FINAL_BUILD;SP_GAME;CMAKE_INTDIR="RelWithDebInfo";jagamex86_64_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN64;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;FINAL_BUILD;SP_GAME;CMAKE_INTDIR=\"RelWithDebInfo\";jagamex86_64_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\lib\gsl-lite\include;C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/game/RelWithDebInfo/jagamex86_64.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/RelWithDebInfo/jagamex86_64.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/code/game/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Lipkin/Desktop/Workshop/SoloAcademy -BC:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed --check-stamp-file C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/game/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\code\game\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/code/game/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Lipkin/Desktop/Workshop/SoloAcademy -BC:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed --check-stamp-file C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/game/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\code\game\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/code/game/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Lipkin/Desktop/Workshop/SoloAcademy -BC:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed --check-stamp-file C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/game/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\code\game\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/code/game/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Lipkin/Desktop/Workshop/SoloAcademy -BC:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed --check-stamp-file C:/Users/Lipkin/Desktop/Workshop/SoloAcademy/sneed/code/game/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\code\game\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Animal.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_AssassinDroid.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Atst.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_BobaFett.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Civilian.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Default.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Droid.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_GalakMech.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Grenadier.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_HazardTrooper.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Howler.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_ImperialProbe.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Interrogator.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Jedi.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Mark1.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Mark2.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_MineMonster.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Rancor.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Remote.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_RocketTrooper.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_SaberDroid.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_SandCreature.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Seeker.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Sentry.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Sniper.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Stormtrooper.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Tusken.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Utils.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AI_Wampa.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_active.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_breakable.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_camera.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_client.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_cmds.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_combat.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_emplaced.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_functions.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_fx.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_inventory.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_itemLoad.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_items.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_main.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_mem.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_misc.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_misc_model.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_missile.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_mover.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_nav.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_navigator.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_navnew.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_object.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_objectives.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_rail.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_ref.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_roff.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_savegame.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_session.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_spawn.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_svcmds.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_target.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\G_Timer.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_trigger.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_turret.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_usable.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_utils.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_weapon.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_weaponLoad.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\genericparser2.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\NPC.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\NPC_behavior.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\NPC_combat.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\NPC_goal.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\NPC_misc.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\NPC_move.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\NPC_reactions.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\NPC_senses.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\NPC_sounds.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\NPC_spawn.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\NPC_stats.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\NPC_utils.cpp" />
+    <ClCompile Include="solo.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\Q3_Interface.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_atst.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_blaster_pistol.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_blaster_rifle.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_bot_laser.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_bowcaster.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_concussion.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_demp2.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_det_pack.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_disruptor.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_emplaced_gun.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_flechette.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_melee.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_noghri_stick.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_repeater.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_rocket_launcher.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_saber.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_saberLoad.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_stun_baton.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_thermal.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_trip_mine.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_tusken.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\Q3_Interface.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\bg_misc.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\bg_pangles.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\bg_panimate.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\bg_pmove.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\bg_slidemove.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\AnimalNPC.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\bg_vehicleLoad.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\FighterNPC.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_vehicles.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\SpeederNPC.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\WalkerNPC.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\ai.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\anims.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\b_local.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\b_public.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\bg_local.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\bg_public.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\bset.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\bstate.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\channels.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\common_headers.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\dmstates.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\events.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\fields.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_functions.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_items.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_local.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_nav.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_navigator.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_public.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_roff.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_shared.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\genericparser2.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\ghoul2_shared.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\hitlocs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\npc_headers.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\objectives.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\say.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\statindex.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\surfaceflags.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\teams.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\weapons.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\w_local.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\wp_saber.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_vehicles.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_camera.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_consolecmds.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_credits.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_draw.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_drawtools.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_effects.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_ents.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_event.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_headers.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_info.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_lights.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_localents.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_main.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_marks.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_players.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_playerstate.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_predict.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_scoreboard.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_servercmds.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_snapshot.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_syscalls.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_text.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_view.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_weapons.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FX_ATSTMain.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FX_Blaster.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FX_Bowcaster.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FX_BryarPistol.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FX_Concussion.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FX_DEMP2.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FX_Disruptor.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FX_Emplaced.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FX_Flechette.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FX_HeavyRepeater.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FX_NoghriShot.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FX_RocketLauncher.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FX_TuskenShot.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FxPrimitives.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FxScheduler.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FxSystem.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FxTemplate.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FxUtil.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_camera.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\animtable.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_headers.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_local.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_media.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_public.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\common_headers.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FxPrimitives.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FxScheduler.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FxSystem.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\FxUtil.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\strip_objectives.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ui\gameinfo.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ui\gameinfo.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\tri_coll_test.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\sstring.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\tags.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\timing.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\q_shared.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\q_shared.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_i_saved_game.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_saved_game_class_archivers.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_saved_game_helper.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_saved_game_helper_fwd.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_scope_guard.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_color.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_color.c" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_math.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_math.c" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_string.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_string.c" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_platform.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared\qcommon\q_version.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\gsl.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\string.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\string.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\sscanf.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\limited_vector.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\files.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\files.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\safe\memory.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\icarus\BlockStream.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\icarus\IcarusImplementation.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\icarus\Sequence.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\icarus\Sequencer.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\icarus\TaskManager.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\icarus\blockstream.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\icarus\IcarusImplementation.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\icarus\IcarusInterface.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\icarus\sequence.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\icarus\sequencer.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\icarus\StdAfx.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\icarus\taskmanager.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\ratl.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\array_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\bits_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\grid_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\handle_pool_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\hash_pool_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\heap_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\list_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\map_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\pool_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\queue_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\ratl_common.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\scheduler_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\stack_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\string_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ratl\vector_vs.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ravl\CBounds.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ravl\CVec.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ravl\CBounds.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ravl\CMatrix.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ravl\CVec.h" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Rufl\hfile.cpp" />
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Rufl\hstring.cpp" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Rufl\hfile.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Rufl\hstring.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ragl\graph_region.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ragl\graph_triangulate.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ragl\graph_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ragl\kdtree_vs.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\Ragl\ragl_common.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ghoul2\G2.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ghoul2\ghoul2_gore.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\mdx_format.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\tr_types.h" />
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\vmachine.h" />
+    <ResourceCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\win32\game.rc" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\ZERO_CHECK.vcxproj">
+      <Project>{536F2D89-8748-321B-AF85-BEDAB73977A2}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

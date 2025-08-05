@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\cl_cgame.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\cl_cin.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\cl_console.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\cl_input.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\cl_keys.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\cl_main.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\cl_mp3.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\cl_parse.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\cl_scrn.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\cl_ui.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\snd_ambient.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\snd_dma.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\snd_mem.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\snd_mix.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\snd_music.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\vmachine.cpp">
+      <Filter>client</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\cm_load.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\cm_patch.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\cm_polylib.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\cm_test.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\cm_trace.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\cmd.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\common.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\cvar.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\files.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\md4.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\msg.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\net_chan.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\q_shared.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\stringed_ingame.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\stringed_interface.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\strip.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\persistence.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\z_memman_pc.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_saved_game.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_color.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_math.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_string.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\files.cpp">
+      <Filter>common\safe</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\string.cpp">
+      <Filter>common\safe</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\server\exe_headers.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\server\sv_ccmds.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\server\sv_client.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\server\sv_game.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\server\sv_init.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\server\sv_main.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\server\sv_savegame.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\server\sv_snapshot.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\server\sv_world.cpp">
+      <Filter>server</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\genericparser2.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\cdct.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\csbt.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\csbtb.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\csbtl3.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\cup.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\cupini.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\cupl1.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\cupl3.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\cwin.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\cwinb.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\cwinm.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\hwin.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\l3dq.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\l3init.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\mdct.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\mhead.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\msis.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\towave.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\uph.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\upsf.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\wavep.c">
+      <Filter>mp3</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ui\ui_atoms.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ui\ui_connect.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ui\ui_main.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ui\ui_saber.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ui\ui_shared.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ui\ui_syscalls.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\sys\sys_main.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\sys\sys_event.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\sys\con_log.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\sdl\sdl_sound.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\sdl\sdl_input.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\sdl\sdl_window.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\sys\sys_win32.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\sys\con_passive.cpp">
+      <Filter>sys</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\keys.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\keycodes.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\cl_mp3.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\client.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\client_ui.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\snd_ambient.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\snd_local.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\snd_music.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\snd_public.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\client\vmachine.h">
+      <Filter>client</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\cm_local.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\cm_patch.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\cm_polylib.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\cm_public.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\q_shared.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\sstring.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\stringed_ingame.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\stringed_interface.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\tags.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\qfiles.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\qcommon.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\game_version.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\timing.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\MiniHeap.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_i_saved_game.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_saved_game.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_saved_game_helper.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_saved_game_helper_fwd.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\ojk_scope_guard.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_color.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_math.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_string.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\q_platform.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\sneed\shared\qcommon\q_version.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\files.h">
+      <Filter>common\safe</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\gsl.h">
+      <Filter>common\safe</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\string.h">
+      <Filter>common\safe</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\sscanf.h">
+      <Filter>common\safe</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\qcommon\safe\limited_vector.h">
+      <Filter>common\safe</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\qcommon\safe\memory.h">
+      <Filter>common\safe</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\server\exe_headers.h">
+      <Filter>server</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\server\server.h">
+      <Filter>server</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\channels.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\anims.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\b_public.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\bg_public.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\bset.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\bstate.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\common_headers.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_functions.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_items.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_local.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_nav.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_public.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\g_shared.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\genericparser2.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\statindex.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\teams.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\weapons.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\surfaceflags.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\game\ghoul2_shared.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\config.h">
+      <Filter>mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\htable.h">
+      <Filter>mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\jdw.h">
+      <Filter>mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\l3.h">
+      <Filter>mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\mhead.h">
+      <Filter>mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\mp3struct.h">
+      <Filter>mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\port.h">
+      <Filter>mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\small_header.h">
+      <Filter>mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\mp3code\tableawd.h">
+      <Filter>mp3</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\mdx_format.h">
+      <Filter>renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\tr_public.h">
+      <Filter>renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\rd-common\tr_types.h">
+      <Filter>renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ui\gameinfo.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ui\menudef.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ui\ui_local.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ui\ui_public.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ui\ui_shared.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ghoul2\G2.h">
+      <Filter>ghoul2</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\ghoul2\ghoul2_gore.h">
+      <Filter>ghoul2</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\cg_public.h">
+      <Filter>cgame</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\cgame\animtable.h">
+      <Filter>cgame</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\win32\resource.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\sys\sys_local.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\sys\sys_public.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\sys\sys_loadlib.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\sys\con_local.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\sdl\sdl_qgl.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\shared\sdl\sdl_icon.h">
+      <Filter>sys</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Users\Lipkin\Desktop\Workshop\SoloAcademy\code\win32\winquake.rc">
+      <Filter>win32</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="cgame">
+      <UniqueIdentifier>{8EE62855-7B00-3B92-8277-0BAF9DED34B9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="client">
+      <UniqueIdentifier>{BBE22ABC-9B98-3202-B3BC-58A427498554}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{112F93E3-A718-3BE2-B852-7117B06C82A8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\safe">
+      <UniqueIdentifier>{8BF16775-F072-33F1-B5F6-37C19DB1A002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{FC3ABC73-1EB5-382B-8304-563F59279063}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ghoul2">
+      <UniqueIdentifier>{463AF67F-9849-398F-BBA8-5AA0242708BB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mp3">
+      <UniqueIdentifier>{19DE1A97-246D-3BE4-AD97-9C2B3541F7C5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="renderer">
+      <UniqueIdentifier>{C0582DBF-E5DA-3AC5-B3B8-7901C2CBC001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="server">
+      <UniqueIdentifier>{CD4D3977-054D-3C06-B759-4AF256AA9349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sys">
+      <UniqueIdentifier>{FFB42933-8CE6-3866-A145-F85CC1844217}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ui">
+      <UniqueIdentifier>{DA363C25-4008-36AC-8B98-760F497EF3B6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="win32">
+      <UniqueIdentifier>{1D72B7E0-9A18-3043-AE95-B0ED1AEC8158}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
