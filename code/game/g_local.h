@@ -84,11 +84,11 @@ along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 #define VALIDSTRING( a )	( ( a != NULL ) && ( a[0] != '\0' ) )
 
-#define GRAPPLE_HOOK_MAX_SPEED			350.0f
+#define GRAPPLE_HOOK_MAX_SPEED			250.0f
 #define GRAPPLE_HOOK_LENGTH_MAX			1000.0f
 #define GRAPPLE_HOOK_LENGTH_MIN			150.0f
 #define GRAPPLE_SWING_ACCELERATION 150.0f
-#define GRAPPLE_RETRACT_SPEED 80.0f
+#define GRAPPLE_RETRACT_SPEED 55.0f
 
 
 //animations

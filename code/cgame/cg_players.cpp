@@ -4509,7 +4509,6 @@ void CG_AddForceSightShell( refEntity_t *ent, centity_t *cent )
 	ent->renderfx &= ~RF_RGB_TINT;
 	// See through walls.
 	ent->renderfx |= (RF_MORELIGHT|RF_NODEPTH);
-
 	if ( (cent->currentState.eFlags&EF_FORCE_VISIBLE)
 		|| (cent->currentState.eType == ET_PLAYER && cent->gent && cent->gent->message) )
 	{
@@ -5007,8 +5006,7 @@ void CG_AddRefEntityWithPowerups( refEntity_t *ent, int powerups, centity_t *cen
 
 	if ((cg.snap->ps.forcePowersActive & (1 << FP_SEE))
 		&& cg.snap->ps.clientNum != cent->currentState.number
-		&& (cg.snap->ps.forceSensive &&
-			cent->currentState.eFlags&EF_FORCE_VISIBLE
+		&& (cent->currentState.eFlags&EF_FORCE_VISIBLE
 			|| ((cent->gent->health > 0 || cent->gent->message )
 			&& cent->currentState.eType == ET_PLAYER//other things handle this in their own render funcs
 			&& CG_PlayerCanSeeCent( cent ))

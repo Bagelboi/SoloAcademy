@@ -226,8 +226,8 @@ qboolean BG_UnrestrainedPitchRoll( playerState_t *ps, Vehicle_t *pVeh )
 
 
 //solo academy shit
-static void ForceSense_Aimbot(void) { //bagelboi: change level to 2 later
-	if ((pm->ps->clientNum < MAX_CLIENTS || PM_ControlledByPlayer()) && !pm->ps->forceSensive && (pm->ps->forcePowersActive & (1 << FP_SEE))){
+static qboolean ForceSense_Aimbot(void) { //bagelboi: change level to 2 later and add a cvar
+	if ((pm->ps->clientNum < MAX_CLIENTS || PM_ControlledByPlayer()) && !pm->ps->forceSensive && (pm->ps->forcePowerLevel[FP_SEE] >= FORCE_LEVEL_2) && (pm->ps->forcePowersActive & (1 << FP_SEE))) {
 		vec3_t eyeOrigin, forward;
 		float radius;
 
@@ -268,7 +268,7 @@ static void ForceSense_Aimbot(void) { //bagelboi: change level to 2 later
 				continue;
 
 			vec3_t toEnemy;
-			CalcEntitySpot(bestTarget, SPOT_HEAD, headPos);
+			CalcEntitySpot(ent, SPOT_HEAD, headPos);
 			VectorSubtract(headPos, eyeOrigin, toEnemy);
 			VectorNormalize(toEnemy);
 
@@ -283,9 +283,9 @@ static void ForceSense_Aimbot(void) { //bagelboi: change level to 2 later
 		if (bestTarget) {
 			vec3_t toHead;
 
-			// tenta obter a posição da cabeça
+			// --- BUG FIX 1: Use 'ent' here, not 'bestTarget' ---
+			// Also, use the bounding box method to get an accurate head position for crouching
 			CalcEntitySpot(bestTarget, SPOT_HEAD, headPos);
-			//CalcEntitySpot(pm->gent, SPOT_WEAPON, eyeOrigin);
 
 			VectorSubtract(headPos, eyeOrigin, toHead);
 			VectorNormalize(toHead);
@@ -293,17 +293,17 @@ static void ForceSense_Aimbot(void) { //bagelboi: change level to 2 later
 			vec3_t newAngles;
 			vectoangles(toHead, newAngles);
 
-			newAngles[PITCH] = AngleNormalize180(-newAngles[PITCH]); // because viewangles expect flipped
-			newAngles[YAW] = AngleNormalize360(newAngles[YAW] + 2);
+			newAngles[PITCH] = AngleNormalize180(newAngles[PITCH]-1.5); // because viewangles expect flipped
+			newAngles[YAW] = AngleNormalize360(newAngles[YAW]+1);
 
 			SetClientViewAngle(pm->gent, newAngles);
 			for (int i = 0; i < 3; i++) {
 				pm->cmd.angles[i] = ANGLE2SHORT(newAngles[i]) - pm->ps->delta_angles[i];
 			}
-
+			return qtrue;
 		}
 	}
-
+	return qfalse;
 }
 
 
@@ -1258,7 +1258,7 @@ static qboolean PM_CheckJump( void )
 					return qfalse;
 				}
 			}
-			else if ( (pm->ps->clientNum < MAX_CLIENTS||PM_ControlledByPlayer()) //player-only for now
+			else if ( (pm->ps->forceSensive && pm->ps->clientNum < MAX_CLIENTS||PM_ControlledByPlayer()) //player-only for now
 				&& pm->cmd.upmove > 0 //trying to jump
 				&& pm->ps->forcePowerLevel[FP_LEVITATION] >= FORCE_LEVEL_3 //force jump 3 or better
 				&& pm->ps->forcePower >= FORCE_LONGJUMP_POWER //this costs 20 force to do
@@ -1475,13 +1475,16 @@ static qboolean PM_CheckJump( void )
 						}
 					}
 
+					pm->ps->velocity[2] += JUMP_VELOCITY * !pm->ps->forceSensive ? pm->ps->forcePowerLevel[FP_LEVITATION] * 0.75 + 1 : 1;
+
 					//need to scale this down, start with height velocity (based on max force jump height) and scale down to regular jump vel
-					pm->ps->velocity[2] = (forceJumpHeight[pm->ps->forcePowerLevel[FP_LEVITATION]]-curHeight)/forceJumpHeight[pm->ps->forcePowerLevel[FP_LEVITATION]]*forceJumpStrength[pm->ps->forcePowerLevel[FP_LEVITATION]];//JUMP_VELOCITY;
-					pm->ps->velocity[2] /= 10;
-					pm->ps->velocity[2] += JUMP_VELOCITY;
-					pm->ps->pm_flags |= PMF_JUMP_HELD;
+					if (pm->ps->forceSensive) {
+						pm->ps->velocity[2] = (forceJumpHeight[pm->ps->forcePowerLevel[FP_LEVITATION]] - curHeight) / forceJumpHeight[pm->ps->forcePowerLevel[FP_LEVITATION]] * forceJumpStrength[pm->ps->forcePowerLevel[FP_LEVITATION]];//JUMP_VELOCITY;
+						pm->ps->velocity[2] /= 10;
+						pm->ps->pm_flags |= PMF_JUMP_HELD;
+					}
 				}
-				else if ( curHeight > forceJumpHeight[0] && curHeight < forceJumpHeight[pm->ps->forcePowerLevel[FP_LEVITATION]] - forceJumpHeight[0] )
+				else if (pm->ps->forceSensive && curHeight > forceJumpHeight[0] && curHeight < forceJumpHeight[pm->ps->forcePowerLevel[FP_LEVITATION]] - forceJumpHeight[0] )
 				{//still have some headroom, don't totally stop it
 					if ( pm->ps->velocity[2] > JUMP_VELOCITY )
 					{
@@ -2124,7 +2127,9 @@ static qboolean PM_CheckJump( void )
 						pm->ps->pm_flags |= (PMF_JUMPING|PMF_SLOW_MO_FALL);
 						pm->cmd.upmove = 0;
 						G_SoundOnEnt( pm->gent, CHAN_BODY, "sound/weapons/force/jump.wav" );
-						WP_ForcePowerDrain( pm->gent, FP_LEVITATION, forcePowerCostOverride );
+
+						if (pm->ps->forceSensive)
+							WP_ForcePowerDrain( pm->gent, FP_LEVITATION, forcePowerCostOverride );
 					}
 				}
 			}
@@ -3639,7 +3644,8 @@ static void PM_CrashLandDamage( int damage )
 		else
 		{
 			damage = PM_DamageForDelta( damage );
-
+			if (!pm->ps->forceSensive && pm->ps->forcePowerLevel[FP_LEVITATION] >= FORCE_LEVEL_2)
+				damage *= 0.5f; // nimble fucker
 			if ( (pm->gent->flags&FL_NO_IMPACT_DMG) )
 				return;
 		}
@@ -3918,7 +3924,7 @@ void G_StartRoll( gentity_t *ent, int anim )
 
 static qboolean PM_TryRoll( void )
 {
-	float rollDist = 192;//was 64;
+	float rollDist = 192 * pm->ps->forceSensive ? 1 : pm->ps->forcePowerLevel[FP_LEVITATION] * 2.5; //bagelboi: non force users with more dexterity
 	if ( PM_SaberInAttack( pm->ps->saberMove ) || PM_SaberInSpecialAttack( pm->ps->torsoAnim )
 		|| PM_SpinningSaberAnim( pm->ps->legsAnim )
 		|| ((pm->ps->clientNum < MAX_CLIENTS||PM_ControlledByPlayer())&&PM_SaberInStart( pm->ps->saberMove )) )
@@ -14041,6 +14047,8 @@ static void PM_Weapon( void )
 	{
 		// charging weapons may want to do their own ammo logic.
 		trueCount = PM_DoChargingAmmoUsage( &amount );
+	} else if (ForceSense_Aimbot() && (cg.crosshairClientNum <= 0 || !g_entities[cg.crosshairClientNum].NPC)) {
+		return; //dont shoot if aimbot is on and we arent targeting an NPC
 	}
 
 	pm->ps->weaponstate = WEAPON_FIRING;
@@ -14120,8 +14128,7 @@ static void PM_Weapon( void )
 		{//oops, got knocked out of the anim, don't throw the thermal
 			return;
 		}
-		ForceSense_Aimbot();
-		PM_AddEvent( EV_FIRE_WEAPON );
+		PM_AddEvent(EV_FIRE_WEAPON);
 		addTime = weaponData[pm->ps->weapon].fireTime;
 
 		switch( pm->ps->weapon)
@@ -14161,10 +14168,10 @@ static void PM_Weapon( void )
 		{
 			if ( !MatrixMode )
 			{//Special test for Matrix Mode (tm)
-				float sensiveScale = !pm->ps->forceSensive /*&& SOLO_COWBOY_WEPS & (1 << pm->ps->weapon)*/? pm->ps->forcePowerLevel[FP_SPEED] / 5 : 1;
-				if ( pm->ps->clientNum == 0 && !player_locked && (pm->ps->forcePowersActive&(1<<FP_SPEED)|| (pm->ps->forceSensive && pm->ps->forcePowersActive&(1<<FP_RAGE)) ) )
+				float sensiveScale = !pm->ps->forceSensive /*&& SOLO_COWBOY_WEPS & (1 << pm->ps->weapon)*/? (pm->ps->forcePowerLevel[FP_SPEED]+1.5f) / 2 : 1;
+				if (pm->ps->clientNum == 0 && !player_locked && (pm->ps->forcePowersActive & (1 << FP_SPEED) || (pm->ps->forceSensive && pm->ps->forcePowersActive & (1 << FP_RAGE))))
 				{//player always fires at normal speed unless not force sensitive and using speed
-					addTime *= (g_timescale->value/sensiveScale);
+					addTime *= (g_timescale->value / sensiveScale);
 				}
 				else if ( g_entities[pm->ps->clientNum].client
 					&& (pm->ps->forcePowersActive&(1<<FP_SPEED)|| (pm->ps->forceSensive && pm->ps->forcePowersActive & (1 << FP_RAGE))) )
@@ -14531,15 +14538,15 @@ void PM_SetSpecialMoveValues (void )
 		{
 			if ( !MatrixMode )
 			{
-				float sensiveScale = !pm->ps->forceSensive ? pm->ps->forcePowerLevel[FP_SPEED] / 5 : 1;
+				float sensiveScale = !pm->ps->forceSensive ? (g_timescale->value + 0.05f) * pm->ps->forcePowerLevel[FP_SPEED]: 1.0f/g_timescale->value;
 				if ( pm->ps->clientNum == 0 && !player_locked && (pm->ps->forcePowersActive&(1<<FP_SPEED)|| (pm->ps->forceSensive && pm->ps->forcePowersActive & (1 << FP_RAGE))) )
 				{
-					pml.frametime *= (1.0f / g_timescale->value) * sensiveScale;
+					pml.frametime *= sensiveScale;
 				}
 				else if ( g_entities[pm->ps->clientNum].client
 					&& (pm->ps->forcePowersActive&(1<<FP_SPEED)|| (pm->ps->forceSensive && pm->ps->forcePowersActive & (1 << FP_RAGE))) )
 				{
-					pml.frametime *= (1.0f/g_timescale->value) * sensiveScale;
+					pml.frametime *= sensiveScale;
 				}
 			}
 		}
@@ -14987,7 +14994,7 @@ void Pmove( pmove_t *pmove )
 
 	if ( pm->ps->pm_flags & PMF_SLOW_MO_FALL )
 	{//half grav
-		pm->ps->gravity *= 0.5;
+		pm->ps->gravity *= pm->ps->forceSensive ? 0.5 : 0.85 ;
 	}
 
 	// set watertype, and waterlevel

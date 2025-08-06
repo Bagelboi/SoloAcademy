@@ -601,7 +601,7 @@ qboolean NPC_CheckEnemyStealth( gentity_t *target )
 			return qfalse;
 
 		//Too close?
-		if ( dist_rating < DISTANCE_THRESHOLD )
+		if ( dist_rating < DISTANCE_THRESHOLD && !(!target->client->ps.forceSensive && target->client->ps.forcePowerLevel[FP_TELEPATHY] >= 3))
 		{
 			G_SetEnemy( NPC, target );
 			TIMER_Set( NPC, "attackDelay", Q_irand( 500, 2500 ) );
@@ -675,6 +675,8 @@ qboolean NPC_CheckEnemyStealth( gentity_t *target )
 		{
 			target_rating *= 0.9f;	//10% bonus
 		}
+
+		target_rating /= !target->client->ps.forceSensive && target->client->ps.powerups[PW_CLOAKED] ? 500<<(target->client->ps.forcePowerLevel[FP_TELEPATHY]+1) : 1;	//cloak fucks the rating
 
 		//If he's violated the threshold, then realize him
 		//float difficulty_scale = 1.0f + (2.0f-g_spskill->value);//if playing on easy, 20% harder to be seen...?

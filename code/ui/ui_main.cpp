@@ -405,6 +405,7 @@ vmCvar_t	ui_char_color_green;
 vmCvar_t	ui_char_color_blue;
 vmCvar_t	ui_PrecacheModels;
 vmCvar_t	ui_screenshotType;
+vmCvar_t	ui_forcesensive;
 
 static void UI_UpdateScreenshot( void )
 {
@@ -467,7 +468,8 @@ static cvarTable_t cvarTable[] =
 
 	{ &ui_PrecacheModels,		"ui_PrecacheModels",	"1", NULL, CVAR_ARCHIVE},
 
-	{ &ui_screenshotType,		"ui_screenshotType",	"jpg", UI_UpdateScreenshot, CVAR_ARCHIVE }
+	{ &ui_screenshotType,		"ui_screenshotType",	"jpg", UI_UpdateScreenshot, CVAR_ARCHIVE },
+	{ &ui_forcesensive,		"ui_forcesensive",		"0", NULL, CVAR_ARCHIVE },
 };
 
 #define FP_UPDATED_NONE -1
@@ -4334,6 +4336,7 @@ static void UI_UpdateCharacterCvars ( void )
 	Cvar_Set ( "g_char_color_red", Cvar_VariableString ( "ui_char_color_red" ) );
 	Cvar_Set ( "g_char_color_green", Cvar_VariableString ( "ui_char_color_green" ) );
 	Cvar_Set ( "g_char_color_blue", Cvar_VariableString ( "ui_char_color_blue" ) );
+	Cvar_Set("g_forcesensive", Cvar_VariableString("ui_forcesensive"));
 }
 
 static void UI_GetCharacterCvars ( void )
@@ -4344,7 +4347,7 @@ static void UI_GetCharacterCvars ( void )
 	Cvar_Set ( "ui_char_color_red", Cvar_VariableString ( "g_char_color_red" ) );
 	Cvar_Set ( "ui_char_color_green", Cvar_VariableString ( "g_char_color_green" ) );
 	Cvar_Set ( "ui_char_color_blue", Cvar_VariableString ( "g_char_color_blue" ) );
-
+	Cvar_Set("ui_forcesensive", Cvar_VariableString("ui_forcesensive"));
 	const char* model = Cvar_VariableString ( "g_char_model" );
 	Cvar_Set ( "ui_char_model", model );
 
@@ -4359,6 +4362,17 @@ static void UI_GetCharacterCvars ( void )
 
 static void UI_UpdateSaberCvars ( void )
 {
+	if (Cvar_VariableValue("ui_forcesensive") < 1) { //force sword for non-force users
+		const char* saber_type = Cvar_VariableString("ui_saber_type");
+		if (saber_type == "dual") {
+			Cvar_Set("ui_saber", "shortsw");
+			Cvar_Set("ui_saber2", "shortsw");
+		}
+		else if (saber_type == "staff")
+			Cvar_Set("ui_saber", "doublesw");
+		else
+			Cvar_Set("ui_saber", "longsw");
+	}
 	Cvar_Set ( "g_saber_type", Cvar_VariableString ( "ui_saber_type" ) );
 	Cvar_Set ( "g_saber", Cvar_VariableString ( "ui_saber" ) );
 	Cvar_Set ( "g_saber2", Cvar_VariableString ( "ui_saber2" ) );
@@ -6214,6 +6228,7 @@ static void	UI_HighLightThrowSelection ( void )
 
 static void UI_GetSaberCvars ( void )
 {
+
 	Cvar_Set ( "ui_saber_type", Cvar_VariableString ( "g_saber_type" ) );
 	Cvar_Set ( "ui_saber", Cvar_VariableString ( "g_saber" ) );
 	Cvar_Set ( "ui_saber2", Cvar_VariableString ( "g_saber2" ) );

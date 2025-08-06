@@ -1106,7 +1106,21 @@ void CG_EntityEvent( centity_t *cent, vec3_t position ) {
 			vec3_t start, end;
 			VectorCopy(cent->gent->client->renderInfo.handRPoint, start);
 			VectorCopy(cg_entities[cent->gent->client->ps.grappleHookEntNum].lerpOrigin, end);
+			if (cent->gent->client->ps.grappleHookState == SOLO_GRAPPLE_REELOUT)
+			{
+				// Time since reel-out started
+				float elapsed = (float)(level.time - cg_entities[cent->gent->client->ps.grappleHookEntNum].gent->setTime);
+				if (elapsed < 0) elapsed = 0;
+				if (elapsed > 600) elapsed = 600;
 
+				// Progress ratio from 0.0 (start) to 1.0 (done)
+				float t = elapsed / 600.0f;
+
+				// Lerp the end point toward start based on t
+				vec3_t ropeVec;
+				VectorSubtract(end, start, ropeVec);
+				VectorMA(start, 1.0f - t, ropeVec, end); // shortens toward start
+			}
 			// White color
 			vec3_t white = { 1,0.5,0 };
 

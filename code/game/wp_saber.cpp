@@ -6577,6 +6577,10 @@ qboolean WP_SaberLaunch( gentity_t *self, gentity_t *saber, qboolean thrown, qbo
 	vec3_t	saberMins={-3.0f,-3.0f,-3.0f};
 	vec3_t	saberMaxs={3.0f,3.0f,3.0f};
 	trace_t	trace;
+	float forceSensive = self->client->ps.forceSensive;
+
+	//if (!forceSensive)
+		//return qfalse;
 
 	if ( self->client->NPC_class == CLASS_SABER_DROID )
 	{//saber droids can't drop their saber
@@ -10308,6 +10312,41 @@ extern bool	Pilot_AnyVehiclesRegistered();
 
 void ForceTelepathy( gentity_t *self )
 {
+
+	if (self->health <= 0)
+	{
+		return;
+	}
+
+	if (self->client->ps.weaponTime >= 800)
+	{//just did one!
+		return;
+	}
+	if (self->client->ps.saberLockTime > level.time)
+	{//FIXME: can this be a way to break out?
+		return;
+	}
+
+	if (!self->client->ps.forceSensive )
+	{
+		if (!self->client->ps.powerups[PW_CLOAKED])
+		{//cloak
+			self->client->ps.powerups[PW_CLOAKED] = Q3_INFINITE;
+			self->client->ps.powerups[PW_UNCLOAKING] = level.time + 500;
+			//FIXME: debounce attacks?
+			//FIXME: temp sound
+			G_SoundOnEnt(self, CHAN_ITEM, "sound/chars/shadowtrooper/cloak.wav");
+			WP_ForcePowerStart(self, FP_TELEPATHY, 1);
+		}
+		else {
+			self->client->ps.powerups[PW_CLOAKED] = 0;
+			self->client->ps.powerups[PW_UNCLOAKING] = level.time + 500;
+			//FIXME: temp sound
+			G_SoundOnEnt(self, CHAN_ITEM, "sound/chars/shadowtrooper/decloak.wav");
+			WP_ForcePowerStop(self, FP_TELEPATHY);
+		}
+	}
+
 	trace_t	tr;
 	vec3_t	end, forward;
 	gentity_t	*traceEnt;
@@ -10317,22 +10356,10 @@ void ForceTelepathy( gentity_t *self )
 	{
 		return;
 	}
-	if ( self->health <= 0 )
-	{
-		return;
-	}
+
 	//FIXME: if mind trick 3 and aiming at an enemy need more force power
 	if ( !WP_ForcePowerUsable( self, FP_TELEPATHY, 0 ) )
 	{
-		return;
-	}
-
-	if ( self->client->ps.weaponTime >= 800 )
-	{//just did one!
-		return;
-	}
-	if ( self->client->ps.saberLockTime > level.time )
-	{//FIXME: can this be a way to break out?
 		return;
 	}
 
@@ -12692,6 +12719,7 @@ void WP_ForcePowerStart( gentity_t *self, forcePowers_t forcePower, int override
 		self->client->ps.forcePowersActive |= ( 1 << forcePower );
 		break;
 	case FP_TELEPATHY:
+
 		break;
 	case FP_GRIP:
 		duration = 1000;
@@ -13435,9 +13463,9 @@ static void WP_ForcePowerRun( gentity_t *self, forcePowers_t forcePower, usercmd
 			{//holding jump in air
 				if ( cmd->upmove > 10 )
 				{//still trying to go up
-					if ( WP_ForcePowerAvailable( self, FP_LEVITATION, 1 ) )
+					if ( !self->client->ps.forceSensive || WP_ForcePowerAvailable( self, FP_LEVITATION, 1 ) )
 					{
-						if ( self->client->ps.forcePowerDebounce[FP_LEVITATION] < level.time )
+						if (self->client->ps.forceSensive && self->client->ps.forcePowerDebounce[FP_LEVITATION] < level.time )
 						{
 							WP_ForcePowerDrain( self, FP_LEVITATION, 5 );
 							self->client->ps.forcePowerDebounce[FP_LEVITATION] = level.time + 100;
@@ -13486,6 +13514,21 @@ static void WP_ForcePowerRun( gentity_t *self, forcePowers_t forcePower, usercmd
 	case FP_PULL:
 		break;
 	case FP_TELEPATHY:
+		if (!self->client->ps.forceSensive && self->client->ps.forcePowerDebounce[FP_TELEPATHY] < level.time)
+		{
+			if (WP_ForcePowerAvailable(self, FP_TELEPATHY, 1)) {
+				self->client->ps.forcePowerDebounce[FP_TELEPATHY] = level.time + 100;
+				WP_ForcePowerDrain(self, FP_TELEPATHY, 2);
+			}
+			else {
+				self->client->ps.powerups[PW_CLOAKED] = 0;
+				self->client->ps.powerups[PW_UNCLOAKING] = level.time + 500;
+				//FIXME: temp sound
+				G_SoundOnEnt(self, CHAN_ITEM, "sound/chars/shadowtrooper/decloak.wav");
+				WP_ForcePowerStop(self, FP_TELEPATHY);
+			}
+			
+		}
 		break;
 	case FP_GRIP:
 		if ( !WP_ForcePowerAvailable( self, FP_GRIP, 0 )
