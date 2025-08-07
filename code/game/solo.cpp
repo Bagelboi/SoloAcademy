@@ -3,6 +3,8 @@
 #include "g_functions.h"
 #include "b_local.h"
 
+extern void WP_ForceKnockdown(gentity_t* self, gentity_t* pusher, qboolean pull, qboolean strongKnockdown, qboolean breakSaberLock);
+
 static void reelOut(gentity_t* self) {
 	//self->s.pos.trType = TR_LINEAR;
 	self->clipmask = CONTENTS_NONE;
@@ -76,7 +78,8 @@ void grapple_hook_think(gentity_t* self)
 						vec3_t dirToNpc;
 						VectorSubtract(someobject->currentOrigin, self->currentOrigin, dirToNpc);
 						VectorNormalize(dirToNpc);
-						G_Knockdown(someobject, self->owner, dirToNpc, 200, qtrue);
+						qboolean high_pull =  (qboolean)(self->owner->client->ps.forcePowerLevel[FP_PULL] > 2);
+						WP_ForceKnockdown(someobject, self->owner, qtrue, high_pull, high_pull);
 						self->owner->client->ps.forcePower = maximum(1, self->owner->client->ps.forcePower - 15);
 						reelOut(self);
 						break;
@@ -99,6 +102,13 @@ void grapple_hook_think(gentity_t* self)
 					reelOut(self);
 				}
 			}
+
+			if (g_entities[self->owner->client->ps.groundEntityNum].s.eType == ET_MOVER) {
+				// If the owner has changed, free the hook
+				freeHook(self);
+				break;
+			}
+
 			break;
 		}
 		case SOLO_GRAPPLE_REELOUT: {

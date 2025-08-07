@@ -62,7 +62,7 @@ extern qboolean PM_HasAnimation( gentity_t *ent, int animation );
 extern qboolean G_TeamEnemy( gentity_t *self );
 extern void CG_ChangeWeapon( int num );
 extern void ChangeWeapon( gentity_t *ent, int newWeapon );
-
+extern qboolean G_NonLocationSpecificDamage(int meansOfDeath);
 extern void G_SetEnemy( gentity_t *self, gentity_t *enemy );
 extern void PM_SetLegsAnimTimer( gentity_t *ent, int *legsAnimTimer, int time );
 extern void PM_SetTorsoAnimTimer( gentity_t *ent, int *torsoAnimTimer, int time );
@@ -2333,7 +2333,7 @@ qboolean G_DoDismemberment( gentity_t *self, vec3_t point, int mod, int damage, 
 	// dismemberment -- FIXME: should have a check for how long npc has been dead so people can't
 	// continue to dismember a dead body long after it's been dead
 	//NOTE that you can only cut one thing off unless the debug_subdivisions is on
-	if ( ( g_dismemberment->integer || g_saberRealisticCombat->integer > 1 ) && mod == MOD_SABER )//only lightsaber
+	if ( ( g_dismemberment->integer || g_saberRealisticCombat->integer > 1 ) && mod == MOD_SABER || G_NonLocationSpecificDamage(mod))//only lightsaber
 	{//FIXME: don't do strcmps here
 		if ( G_StandardHumanoid( self )
 			&& (force||g_dismemberProbabilities->value>0.0f||G_Dismemberable2( self, hitLoc )) )
@@ -3607,6 +3607,7 @@ extern void NPC_LeaveTroop(gentity_t* actor);
 extern void Rancor_DropVictim( gentity_t *self );
 extern void Wampa_DropVictim( gentity_t *self );
 extern void WP_StopForceHealEffects( gentity_t *self );
+
 void player_die( gentity_t *self, gentity_t *inflictor, gentity_t *attacker, int damage, int meansOfDeath, int dflags, int hitLoc )
 {
 	int			anim;
@@ -4605,6 +4606,18 @@ extern void RunEmplacedWeapon( gentity_t *ent, usercmd_t **ucmd );
 		{
 			NPC_SetAnim(self, SETANIM_BOTH, anim, SETANIM_FLAG_OVERRIDE|SETANIM_FLAG_HOLD);
 		}
+	}
+
+	if (G_NonLocationSpecificDamage(meansOfDeath))
+	{
+		// Use the 'force' parameter (qtrue) to bypass normal probability checks.
+		// This respects the 'g_dismemberment' cvar settings for which limbs can be removed.
+		G_DoDismemberment(self, self->pos1, meansOfDeath, damage, HL_HEAD, qtrue);
+		G_DoDismemberment(self, self->pos1, meansOfDeath, damage, HL_ARM_RT, qtrue);
+		G_DoDismemberment(self, self->pos1, meansOfDeath, damage, HL_ARM_LT, qtrue);
+		G_DoDismemberment(self, self->pos1, meansOfDeath, damage, HL_LEG_RT, qtrue);
+		G_DoDismemberment(self, self->pos1, meansOfDeath, damage, HL_LEG_LT, qtrue);
+		G_DoDismemberment(self, self->pos1, meansOfDeath, damage, HL_WAIST, qtrue);
 	}
 
 	//do any dismemberment if there's any to do...

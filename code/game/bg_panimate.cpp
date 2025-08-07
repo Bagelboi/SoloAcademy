@@ -2935,6 +2935,10 @@ qboolean PM_CheckFlipOverAttackMove( qboolean checkEnemy )
 	{
 		return qfalse;
 	}
+
+	if (!pm->ps->forceSensive)
+		return qfalse;
+
 	//check to see if it's cancelled?
 	if ( pm->ps->saber[0].jumpAtkFwdMove == LS_NONE )
 	{
@@ -3145,6 +3149,9 @@ saberMoveName_t PM_CheckDualSpinProtect( void )
 	{
 		return LS_NONE;
 	}
+
+	if (!pm->ps->forceSensive)
+		return LS_NONE;
 
 	//see if we have an overridden (or cancelled) kata move
 	if ( pm->ps->saber[0].kataMove != LS_INVALID )

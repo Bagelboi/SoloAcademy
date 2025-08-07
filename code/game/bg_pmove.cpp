@@ -226,7 +226,7 @@ qboolean BG_UnrestrainedPitchRoll( playerState_t *ps, Vehicle_t *pVeh )
 
 
 //solo academy shit
-static qboolean ForceSense_Aimbot(void) { //bagelboi: change level to 2 later and add a cvar
+static qboolean ForceSense_Aimbot(void) { //bagelboi: change level to 2 later and add a cvar. needs to angle slightly less if farther away
 	if ((pm->ps->clientNum < MAX_CLIENTS || PM_ControlledByPlayer()) && !pm->ps->forceSensive && (pm->ps->forcePowerLevel[FP_SEE] >= FORCE_LEVEL_2) && (pm->ps->forcePowersActive & (1 << FP_SEE))) {
 		vec3_t eyeOrigin, forward;
 		float radius;
@@ -1947,7 +1947,7 @@ static qboolean PM_CheckJump( void )
 								else if ( anim == BOTH_FORCEWALLRUNFLIP_START )
 								{//instead of wall-running up, do the backflip
 									anim = BOTH_WALL_FLIP_BACK1;
-									vertPush = forceJumpStrength[FORCE_LEVEL_2]/2.25f;
+									vertPush = forceJumpStrength[FORCE_LEVEL_2] / 2.25 / !pm->ps->forceSensive ? 2.5f : 1.0f;
 								}
 							}
 							else if ( anim == BOTH_WALL_FLIP_BACK1 )
@@ -9092,8 +9092,10 @@ static void PM_BeginWeaponChange( int weapon ) {
 			}
 		}
 		//put this back in because saberActive isn't being set somewhere else anymore
-		pm->ps->SaberDeactivate();
-		pm->ps->SetSaberLength( 0.0f );
+		if (!(!pm->ps->forceSensive && pm->ps->saberInFlight)) {
+			pm->ps->SaberDeactivate();
+			pm->ps->SetSaberLength(0.0f);
+		}
 	}
 }
 
