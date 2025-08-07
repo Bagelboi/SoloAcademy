@@ -4525,16 +4525,16 @@ void CG_AddForceSightShell( refEntity_t *ent, centity_t *cent )
 	ent->shaderRGBA[1] = 255;
 	ent->shaderRGBA[2] = 0;
 
-	//if ( g_entities[0].client->ps.forcePowerLevel[FP_SEE] > FORCE_LEVEL_2 )
-	//{TEST: level 3 identifies friend or foe with color
+	if (g_entities[0].client->ps.forceSensive || (!g_entities[0].client->ps.forceSensive && g_entities[0].client->ps.forcePowerLevel[FP_SEE] > FORCE_LEVEL_1)) {
+		//{non force sensitive with level 2+ see enemies and players}
 		team_t team = TEAM_NEUTRAL;
-		if ( cent->gent && cent->gent->client )
+		if (cent->gent && cent->gent->client)
 		{
 			team = cent->gent->client->playerTeam;
 		}
-		else if ( cent->gent && cent->gent->owner )
+		else if (cent->gent && cent->gent->owner)
 		{
-			if ( cent->gent->owner->client )
+			if (cent->gent->owner->client)
 			{
 				team = cent->gent->owner->client->playerTeam;
 			}
@@ -4543,7 +4543,7 @@ void CG_AddForceSightShell( refEntity_t *ent, centity_t *cent )
 				team = cent->gent->owner->noDamageTeam;
 			}
 		}
-		switch ( team )
+		switch (team)
 		{
 		case TEAM_ENEMY:
 			ent->shaderRGBA[0] = 255;
@@ -4556,12 +4556,12 @@ void CG_AddForceSightShell( refEntity_t *ent, centity_t *cent )
 			ent->shaderRGBA[2] = 0;
 			break;
 		case TEAM_FREE:
-			if ( cent->gent && cent->gent->client )
+			if (cent->gent && cent->gent->client)
 			{
-				if ( cent->gent->client->NPC_class == CLASS_TUSKEN
+				if (cent->gent->client->NPC_class == CLASS_TUSKEN
 					|| cent->gent->client->NPC_class == CLASS_RANCOR
 					|| cent->gent->client->NPC_class == CLASS_WAMPA
-					|| cent->gent->client->NPC_class == CLASS_SAND_CREATURE )
+					|| cent->gent->client->NPC_class == CLASS_SAND_CREATURE)
 				{
 					ent->shaderRGBA[0] = 255;
 					ent->shaderRGBA[1] = 0;
@@ -4572,7 +4572,7 @@ void CG_AddForceSightShell( refEntity_t *ent, centity_t *cent )
 		default:
 			break;
 		}
-
+	}
 	if (g_entities[0].client->ps.forceSensive && g_entities[0].client->ps.forcePowerLevel[FP_SEE] > FORCE_LEVEL_2)
 	{//TEST: level 3 also displays health
 		if ( cent->gent && cent->gent->health > 0 && cent->gent->max_health > 0 )
@@ -4589,6 +4589,7 @@ void CG_AddForceSightShell( refEntity_t *ent, centity_t *cent )
 	*/
 
 	//FIXME: make it darker or more translucent the further away it is?
+
 
 	cgi_R_AddRefEntityToScene( ent );
 }

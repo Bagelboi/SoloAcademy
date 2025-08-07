@@ -6487,22 +6487,7 @@ void WP_RunSaber( gentity_t *self, gentity_t *saber )
 			{//aim saber from eyes
 				VectorCopy( self->client->renderInfo.eyePoint, saberHome );
 			}
-
-			if (self->client->ps.forceSensive)
-			{
-				VectorMA(saberHome, self->client->ps.saberEntityDist, forward, saberDest);
-			}
-			else
-			{
-				// This is the correct way for non-force-sensitives
-				vec3_t throwDir;
-
-				// 1. Convert your stored angles (angles2) into a proper direction vector.
-				AngleVectors(saber->s.angles2, throwDir, NULL, NULL);
-
-				// 2. Use that new direction vector to calculate the destination.
-				VectorMA(saber->s.pos.trBase, self->client->ps.forcePowerLevel[FP_SABERTHROW]*400, throwDir, saberDest);
-			}
+			VectorMA( saberHome, self->client->ps.saberEntityDist, forward, saberDest );
 
 			if ( self->client->ps.forcePowerLevel[FP_SABERTHROW] > FORCE_LEVEL_2
 				&& self->client->ps.saberEntityState == SES_LEAVING )
@@ -6668,7 +6653,6 @@ qboolean WP_SaberLaunch( gentity_t *self, gentity_t *saber, qboolean thrown, qbo
 	saber->s.pos.trTime = level.time;
 	saber->s.pos.trType = TR_LINEAR;
 	VectorClear( saber->s.pos.trDelta );
-	VectorCopy(self->client->ps.viewangles, saber->s.angles2);
 	gi.linkentity( saber );
 
 	//spin it
@@ -6923,17 +6907,20 @@ void WP_SaberReturn( gentity_t *self, gentity_t *saber )
 	}
 	if ( self && self->client )
 	{//still alive and stuff
-		//FIXME: when it's returning, flies butt first, but seems to do a lot of damage when going through people... hmm...
-		if (self->client->ps.forceSensive) {
-			self->client->ps.saberEntityState = SES_RETURNING;
-			//turn down the saber trail
-			if (!(self->client->ps.saber[0].saberFlags & SFL_RETURN_DAMAGE))//type != SABER_STAR )
-			{
-				self->client->ps.saber[0].DeactivateTrail(75);
+		if (!self->client->ps.forceSensive) {
+			vec3_t dist;
+			VectorSubtract(self->currentOrigin, saber->currentOrigin, dist);
+			if (VectorLengthSquared(dist) < 512) {
+				WP_SaberCatch(self, saber, qtrue);
 			}
+			return;
 		}
-		else {
-			WP_SaberDrop(self, saber);
+		//FIXME: when it's returning, flies butt first, but seems to do a lot of damage when going through people... hmm...
+		self->client->ps.saberEntityState = SES_RETURNING;
+		//turn down the saber trail
+		if ( !(self->client->ps.saber[0].saberFlags&SFL_RETURN_DAMAGE) )//type != SABER_STAR )
+		{
+			self->client->ps.saber[0].DeactivateTrail( 75 );
 		}
 	}
 	if ( !(saber->s.eFlags&EF_BOUNCE) )
@@ -6954,7 +6941,6 @@ void WP_SaberDrop( gentity_t *self, gentity_t *saber )
 	saber->s.pos.trType = TR_GRAVITY;
 	//make it bounce some
 	saber->s.eFlags |= EF_BOUNCE_HALF;
-	VectorScale(saber->s.angles2, 0, saber->s.angles2); //so the saber doesnt fuck off forever
 	//make it spin
 	VectorCopy( saber->currentAngles, saber->s.apos.trBase );
 	saber->s.apos.trType = TR_LINEAR;
@@ -6987,18 +6973,8 @@ void WP_SaberPull( gentity_t *self, gentity_t *saber )
 	{
 		return;
 	}
-	if  ( self->health > 0 )
+	if ( self->health > 0 )
 	{
-
-		if (!self->client->ps.forceSensive) {
-			vec3_t dist;
-			VectorSubtract(self->currentOrigin, saber->currentOrigin, dist);
-			if (VectorLengthSquared(dist) < 512) {
-				WP_SaberCatch(self, saber, qtrue);
-			}
-			return;
-		}
-
 		//take off gravity
 		saber->s.pos.trType = TR_LINEAR;
 		//take off bounce
@@ -7155,7 +7131,7 @@ void WP_SaberThrow( gentity_t *self, usercmd_t *ucmd )
 		{//wasn't throwing saber
 			return;
 		}
-		else if ( saberent->s.pos.trType == TR_LINEAR && self->client->ps.forceSensive)
+		else if ( saberent->s.pos.trType == TR_LINEAR )
 		{//switched away while controlling it, just drop the saber
 			WP_SaberDrop( self, saberent );
 			return;
@@ -7222,15 +7198,13 @@ void WP_SaberThrow( gentity_t *self, usercmd_t *ucmd )
 					WP_SaberReturn( self, saberent );
 				}
 			}
-			else if ( level.time - self->client->ps.saberThrowTime >= 100)
+			else if ( level.time - self->client->ps.saberThrowTime >= 100 )
 			{
-				if (WP_ForcePowerAvailable( self, FP_SABERTHROW, 1 ) && self->client->ps.forceSensive)
+				if ( WP_ForcePowerAvailable( self, FP_SABERTHROW, 1 ) )
 				{
 					WP_ForcePowerDrain( self, FP_SABERTHROW, 1 );
 					self->client->ps.saberThrowTime = level.time;
 				}
-				else if (!self->client->ps.forceSensive)
-					self->client->ps.saberThrowTime = level.time;
 				else
 				{//out of force power, return to me
 					WP_SaberReturn( self, saberent );
@@ -7239,15 +7213,15 @@ void WP_SaberThrow( gentity_t *self, usercmd_t *ucmd )
 		}
 		else
 		{
-			if ( !(ucmd->buttons&BUTTON_ALT_ATTACK) && self->client->ps.forcePowerDebounce[FP_SABERTHROW] < level.time && self->client->ps.forceSensive)
+			if ( !(ucmd->buttons&BUTTON_ALT_ATTACK) && self->client->ps.forcePowerDebounce[FP_SABERTHROW] < level.time )
 			{//not holding button and has been out at least 1 second, return to me
 				if ( self->client->ps.saber[0].Active() )
 				{//still on
 					WP_SaberReturn( self, saberent );
 				}
 			}
-			else if ( level.time - self->client->ps.saberThrowTime > (3000 * !self->client->ps.forceSensive ? 4.0 : 1.0f)
-				|| (self->client->ps.forcePowerLevel[FP_SABERTHROW]==FORCE_LEVEL_1&&(saberDist>=self->client->ps.saberEntityDist * !self->client->ps.forceSensive ? 2.0 : 1.0f) ) )
+			else if ( level.time - self->client->ps.saberThrowTime > 3000
+				|| (self->client->ps.forcePowerLevel[FP_SABERTHROW]==FORCE_LEVEL_1&&saberDist>=self->client->ps.saberEntityDist) )
 			{//been out too long, or saber throw 1 went too far, return to me
 				if ( self->client->ps.saber[0].Active() )
 				{//still on
@@ -10373,13 +10347,12 @@ void ForceTelepathy( gentity_t *self )
 			WP_ForcePowerStart(self, FP_TELEPATHY, 1);
 		}
 		else {
-			WP_ForcePowerStop(self, FP_TELEPATHY);
 			self->client->ps.powerups[PW_CLOAKED] = 0;
 			self->client->ps.powerups[PW_UNCLOAKING] = level.time + 500;
 			//FIXME: temp sound
 			G_SoundOnEnt(self, CHAN_ITEM, "sound/chars/shadowtrooper/decloak.wav");
+			WP_ForcePowerStop(self, FP_TELEPATHY);
 		}
-		return;
 	}
 
 	trace_t	tr;
@@ -12736,8 +12709,7 @@ void WP_ForcePowerStart( gentity_t *self, forcePowers_t forcePower, int override
 		WP_StartForceHealEffects( self );
 		break;
 	case FP_LEVITATION:
-		if (self->client->ps.forceSensive)
-			self->client->ps.forcePowersActive |= ( 1 << forcePower );
+		self->client->ps.forcePowersActive |= ( 1 << forcePower );
 		break;
 	case FP_SPEED:
 		//duration is always 5 seconds, player time
@@ -12755,8 +12727,7 @@ void WP_ForcePowerStart( gentity_t *self, forcePowers_t forcePower, int override
 		self->client->ps.forcePowersActive |= ( 1 << forcePower );
 		break;
 	case FP_TELEPATHY:
-		if (!self->client->ps.forceSensive)
-			self->client->ps.forcePowersActive |= (1 << forcePower);
+
 		break;
 	case FP_GRIP:
 		duration = 1000;
@@ -12965,7 +12936,7 @@ qboolean WP_ForcePowerUsable( gentity_t *self, forcePowers_t forcePower, int ove
 	}
 	else
 	{
-		if ( forcePower == FP_SABERTHROW && (self->client->ps.saber[0].saberFlags&SFL_NOT_THROWABLE) )
+		if ( forcePower == FP_SABERTHROW && !self->client->ps.forceSensive || (self->client->ps.saber[0].saberFlags&SFL_NOT_THROWABLE) )
 		{//cannot throw this kind of saber
 			return qfalse;
 		}
@@ -13555,14 +13526,14 @@ static void WP_ForcePowerRun( gentity_t *self, forcePowers_t forcePower, usercmd
 		{
 			if (WP_ForcePowerAvailable(self, FP_TELEPATHY, 1)) {
 				self->client->ps.forcePowerDebounce[FP_TELEPATHY] = level.time + 100;
-				WP_ForcePowerDrain(self, FP_TELEPATHY, 1);
+				WP_ForcePowerDrain(self, FP_TELEPATHY, 2);
 			}
 			else {
-				WP_ForcePowerStop(self, FP_TELEPATHY);
 				self->client->ps.powerups[PW_CLOAKED] = 0;
 				self->client->ps.powerups[PW_UNCLOAKING] = level.time + 500;
 				//FIXME: temp sound
 				G_SoundOnEnt(self, CHAN_ITEM, "sound/chars/shadowtrooper/decloak.wav");
+				WP_ForcePowerStop(self, FP_TELEPATHY);
 			}
 			
 		}

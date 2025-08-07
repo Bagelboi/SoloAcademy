@@ -50,11 +50,11 @@ void grapple_hook_think(gentity_t* self)
 			if (!tr.startsolid && tr.fraction < 1.0f) {
 				if (tr.entityNum == ENTITYNUM_WORLD) {
 
-						if (tr.surfaceFlags & SURF_SKY) {
-							// Reel out if we hit the sky
-							reelOut(self);
-							break;
-						}
+					if (tr.surfaceFlags & SURF_SKY) {
+						// Reel out if we hit the sky
+						reelOut(self);
+						break;
+					}
 
 					VectorCopy(tr.endpos, self->s.pos.trBase);
 					self->s.pos.trTime = level.time;
@@ -78,7 +78,7 @@ void grapple_hook_think(gentity_t* self)
 						vec3_t dirToNpc;
 						VectorSubtract(someobject->currentOrigin, self->currentOrigin, dirToNpc);
 						VectorNormalize(dirToNpc);
-						qboolean high_pull =  (qboolean)(self->owner->client->ps.forcePowerLevel[FP_PULL] > 2);
+						qboolean high_pull = (qboolean)(self->owner->client->ps.forcePowerLevel[FP_PULL] > 2);
 						WP_ForceKnockdown(someobject, self->owner, qtrue, high_pull, high_pull);
 						self->owner->client->ps.forcePower = maximum(1, self->owner->client->ps.forcePower - 15);
 						reelOut(self);

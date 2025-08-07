@@ -226,8 +226,8 @@ qboolean BG_UnrestrainedPitchRoll( playerState_t *ps, Vehicle_t *pVeh )
 
 
 //solo academy shit
-static qboolean ForceSense_Aimbot(void) { //bagelboi: change level to 2 later and add a cvar. needs to angle slightly less if farther away
-	if ((pm->ps->clientNum < MAX_CLIENTS || PM_ControlledByPlayer()) && !pm->ps->forceSensive && (pm->ps->forcePowerLevel[FP_SEE] >= FORCE_LEVEL_2) && (pm->ps->forcePowersActive & (1 << FP_SEE))) {
+static qboolean ForceSense_Aimbot(void) { //bagelboi: change level to 2 later and add a cvar
+	if ((pm->ps->clientNum < MAX_CLIENTS || PM_ControlledByPlayer()) && !pm->ps->forceSensive && (pm->ps->forcePowerLevel[FP_SEE] >= FORCE_LEVEL_1) && (pm->ps->forcePowersActive & (1 << FP_SEE))) {
 		vec3_t eyeOrigin, forward;
 		float radius;
 
@@ -285,16 +285,25 @@ static qboolean ForceSense_Aimbot(void) { //bagelboi: change level to 2 later an
 
 			// --- BUG FIX 1: Use 'ent' here, not 'bestTarget' ---
 			// Also, use the bounding box method to get an accurate head position for crouching
-			CalcEntitySpot(bestTarget, SPOT_HEAD, headPos);
+			if (pm->ps->forcePowerLevel[FP_SEE] < 2)
+				CalcEntitySpot(bestTarget, SPOT_CHEST, headPos);
+			else
+				CalcEntitySpot(bestTarget, SPOT_HEAD, headPos);
 
 			VectorSubtract(headPos, eyeOrigin, toHead);
-			VectorNormalize(toHead);
 
+			float scale = VectorLengthSquared(toHead);
+			if (scale > 2048.0f) //too far, need to adjust aim modifier
+				scale = 2048.0f / VectorLengthSquared(toHead);
+			else
+				scale = 1.0f;
+
+			VectorNormalize(toHead);
 			vec3_t newAngles;
 			vectoangles(toHead, newAngles);
 
-			newAngles[PITCH] = AngleNormalize180(newAngles[PITCH]-1.5); // because viewangles expect flipped
-			newAngles[YAW] = AngleNormalize360(newAngles[YAW]+1);
+			newAngles[PITCH] = AngleNormalize180(newAngles[PITCH]-1.5*scale); // because viewangles expect flipped
+			newAngles[YAW] = AngleNormalize360(newAngles[YAW]+1*scale);
 
 			SetClientViewAngle(pm->gent, newAngles);
 			for (int i = 0; i < 3; i++) {
@@ -1947,7 +1956,7 @@ static qboolean PM_CheckJump( void )
 								else if ( anim == BOTH_FORCEWALLRUNFLIP_START )
 								{//instead of wall-running up, do the backflip
 									anim = BOTH_WALL_FLIP_BACK1;
-									vertPush = forceJumpStrength[FORCE_LEVEL_2] / 2.25 / !pm->ps->forceSensive ? 2.5f : 1.0f;
+									vertPush = forceJumpStrength[FORCE_LEVEL_2] / 2.25f;
 								}
 							}
 							else if ( anim == BOTH_WALL_FLIP_BACK1 )
@@ -9092,10 +9101,8 @@ static void PM_BeginWeaponChange( int weapon ) {
 			}
 		}
 		//put this back in because saberActive isn't being set somewhere else anymore
-		if (!(!pm->ps->forceSensive && pm->ps->saberInFlight)) {
-			pm->ps->SaberDeactivate();
-			pm->ps->SetSaberLength(0.0f);
-		}
+		pm->ps->SaberDeactivate();
+		pm->ps->SetSaberLength( 0.0f );
 	}
 }
 
@@ -11236,7 +11243,7 @@ qboolean PM_PickAutoMultiKick( qboolean allowSingles )
 qboolean PM_SaberThrowable( void )
 {
 	//ugh, hard-coding this is bad...
-	if ( pm->ps->saberAnimLevel == SS_STAFF )
+	if ( pm->ps->saberAnimLevel == SS_STAFF || !pm->ps->forceSensive )
 	{
 		return qfalse;
 	}
@@ -11390,6 +11397,7 @@ qboolean PM_CanDoKata( void )
 		&& pm->cmd.forwardmove >=0 //not moving back (used to be !pm->cmd.forwardmove)
 		&& !pm->cmd.rightmove//not moving r/l
 		&& pm->cmd.upmove <= 0//not jumping...?
+		&& pm->ps->forceSensive
 		&& G_TryingKataAttack(pm->gent,&pm->cmd)/*(pm->cmd.buttons&BUTTON_FORCE_FOCUS)*///holding focus
 		&& G_EnoughPowerForSpecialMove( pm->ps->forcePower, SABER_ALT_ATTACK_POWER, qtrue )/*pm->ps->forcePower >= SABER_ALT_ATTACK_POWER*/ )//SINGLE_SPECIAL_POWER )// have enough power
 	{//FIXME: check rage, etc...
@@ -14593,7 +14601,7 @@ void PM_AdjustAttackStates( pmove_t *pm )
 			}
 		}
 		//saber staff alt-attack does a special attack anim, non-throwable sabers do kicks
-		if ( pm->ps->saberAnimLevel != SS_STAFF
+		if (pm->ps->forceSensive && pm->ps->saberAnimLevel != SS_STAFF
 			&& !(pm->ps->saber[0].saberFlags&SFL_NOT_THROWABLE) )
 		{//using a throwable saber, so remove the saber throw button
 			if ( !g_saberNewControlScheme->integer

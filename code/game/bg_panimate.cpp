@@ -3150,9 +3150,6 @@ saberMoveName_t PM_CheckDualSpinProtect( void )
 		return LS_NONE;
 	}
 
-	if (!pm->ps->forceSensive)
-		return LS_NONE;
-
 	//see if we have an overridden (or cancelled) kata move
 	if ( pm->ps->saber[0].kataMove != LS_INVALID )
 	{
@@ -3188,6 +3185,7 @@ saberMoveName_t PM_CheckDualSpinProtect( void )
 		//&& (pm->ps->clientNum < MAX_CLIENTS||PM_ControlledByPlayer())//PLAYER ONLY...?
 		//&& pm->ps->viewangles[0] > 30 //looking down
 		&& pm->ps->saberAnimLevel == SS_DUAL//using dual saber style
+		&& pm->ps->forceSensive
 		&& pm->ps->saber[0].Active() && pm->ps->saber[1].Active()//both sabers on
 		//&& pm->ps->forcePowerLevel[FP_PUSH]>=FORCE_LEVEL_3//force push 3
 		//&& ((pm->ps->forcePowersActive&(1<<FP_PUSH))||pm->ps->forcePowerDebounce[FP_PUSH]>level.time)//force-pushing
