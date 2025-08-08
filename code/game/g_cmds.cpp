@@ -957,9 +957,15 @@ void G_SoloHook(gentity_t* ent) {
 
 	if (ent->client)
 	{
+		gi.Printf(
+			"GrappleHookState: %d | GrappleHookEntNum: %d\n",
+			ent->client->ps.grappleHookState,
+			ent->client->ps.grappleHookEntNum
+		);
+		char* grapple_hook_classname = "grapple_hook";
 		if (ent->client->ps.grappleHookEntNum <= 0 || ent->client->ps.grappleHookEntNum >= ENTITYNUM_WORLD) {
 
-			if (ent->client->ps.grappleHookState < 1) {
+			if (ent->client->ps.grappleHookState < 1 || !strcmp(g_entities[ent->client->ps.grappleHookEntNum].classname, grapple_hook_classname)) {
 				vec3_t start, end, forward;
 				//trace_t tr;
 				gentity_t* grappleEnt; //hi
@@ -1003,18 +1009,18 @@ void G_SoloHook(gentity_t* ent) {
 			} 
 		}
 		else {
-			gentity_t* grapple_ent_existing = &g_entities[ent->client->ps.grappleHookEntNum];
-			if (grapple_ent_existing && ent->client->ps.grappleHookState == SOLO_GRAPPLE_REELIN || ent->client->ps.grappleHookState == SOLO_GRAPPLE_STUCK) {
-				grapple_ent_existing->s.pos.trType = TR_LINEAR;
-				grapple_ent_existing->clipmask = CONTENTS_NONE;
-				if (ent->client->ps.grappleHookState == SOLO_GRAPPLE_STUCK)
-					NPC_SetAnim(ent, SETANIM_TORSO, BOTH_FORCEPULL, SETANIM_FLAG_OVERRIDE | SETANIM_FLAG_HOLD | SETANIM_FLAG_RESTART);
-				ent->client->ps.grappleHookState = SOLO_GRAPPLE_REELOUT;
-				grapple_ent_existing->setTime = level.time;
-			} else if (!grapple_ent_existing) {
+			//gentity_t* grapple_ent_existing = &g_entities[ent->client->ps.grappleHookEntNum];
+			//if (grapple_ent_existing && ent->client->ps.grappleHookState == SOLO_GRAPPLE_REELIN || ent->client->ps.grappleHookState == SOLO_GRAPPLE_STUCK) {
+			//	grapple_ent_existing->s.pos.trType = TR_LINEAR;
+			//	grapple_ent_existing->clipmask = CONTENTS_NONE;
+			//	if (ent->client->ps.grappleHookState == SOLO_GRAPPLE_STUCK)
+			//		NPC_SetAnim(ent, SETANIM_TORSO, BOTH_FORCEPULL, SETANIM_FLAG_OVERRIDE | SETANIM_FLAG_HOLD | SETANIM_FLAG_RESTART);
+			//	ent->client->ps.grappleHookState = SOLO_GRAPPLE_REELOUT;
+			//	grapple_ent_existing->setTime = level.time;
+		//	} else if (!grapple_ent_existing) {
 				ent->client->ps.grappleHookEntNum = -1;
 				ent->client->ps.grappleHookState = SOLO_GRAPPLE_NONE;
-			}
+		//	}
 		}
 	}
 }
